@@ -7,7 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+
 void main() {
+
+
+  //WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppColors.primaryColor,
@@ -18,7 +22,7 @@ void main() {
 
   )
       );
-  setPathUrlStrategy();
+  //setPathUrlStrategy();
   runApp( MyApp());
 }
 

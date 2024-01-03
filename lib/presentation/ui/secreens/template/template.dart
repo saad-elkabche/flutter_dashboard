@@ -3,6 +3,7 @@ import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/components/header.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/components/menu.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:ayoub_baali/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,31 +34,33 @@ class _TemplateState extends State<Template> {
   Widget build(BuildContext context) {
     currentLocation=GoRouterState.of(context).uri.toString();
 
-    return LayoutBuilder(builder: (context,constraint){
-      width=MediaQuery.sizeOf(context).width;
+    double width=MediaQuery.sizeOf(context).width;
+    double height=MediaQuery.sizeOf(context).height;
 
-      print(width);
-      if(width<=340){
-        size=SecreenSize.small;
-      }else if(width<=1000){
-        size=SecreenSize.medium;
-      }else{
-        size=SecreenSize.large;
-      }
-
+    if(width<=600){
+      size=SecreenSize.small;
+    }else if(width<=1000){
+      size=SecreenSize.medium;
+    }else{
+      size=SecreenSize.large;
+    }
 
 
-      return SafeArea(
-        child: size==SecreenSize.large
-            ?Row(
-          children: [
-           Material(child: _menu(),
-           ),
-            Expanded(child: _content())
-          ],
-        ):_content()
-      );
-    });
+    return TemplateState(
+      height: height,
+      width: width,
+      size: size,
+      child: SafeArea(
+          child: size==SecreenSize.large
+              ?Row(
+            children: [
+              Material(child: _menu(),
+              ),
+              Expanded(child: _content())
+            ],
+          ):_content()
+      ),
+    );
   }
 
   Widget _content(){
@@ -68,7 +71,7 @@ class _TemplateState extends State<Template> {
       body:Center(
         child: widget.child,
       ),
-      bottomNavigationBar: !kIsWeb?BottomNavigationBar(
+      bottomNavigationBar: size!=SecreenSize.large?BottomNavigationBar(
           backgroundColor: AppColors.primaryColor,
 
           currentIndex: 0,

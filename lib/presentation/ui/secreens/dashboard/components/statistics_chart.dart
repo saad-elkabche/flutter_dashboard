@@ -138,7 +138,7 @@ class StatisticsChart extends StatelessWidget {
 
           ),
         ),
-        Text('You Have Complete the Next Rank',style: GoogleFonts.poppins(color: Colors.black,fontSize: 10),)
+        Text('You Have Complete the Next Rank',textAlign: TextAlign.center,style: GoogleFonts.poppins(color: Colors.black,fontSize: 10),)
       ],
     );
   }
@@ -148,7 +148,7 @@ class StatisticsChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$name',style: GoogleFonts.poppins(fontSize: 9,fontWeight: FontWeight.bold),),
+          Text('$name',style: GoogleFonts.poppins(fontSize: 9,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,),
           Row(
             children: [
               Icon(

@@ -35,6 +35,8 @@ class AppImages{
   static const String ic_withdraw_action="assets/icons/ic_withdraw.png";
   static const String ic_transaction_action="assets/icons/ic_transaction_action.png";
   static const String ic_network="assets/icons/ic_network.png";
+  static const String ic_check="assets/icons/ic_check.png";
+  static const String ic_navigation="assets/icons/ic_navigation.png";
 
 
 
@@ -42,7 +44,7 @@ class AppImages{
   static const String ic_rd_invest="assets/icons/ic_rd_invest.png";
   static const String ic_rd_money="assets/icons/ic_rd_money.png";
   static const String ic_rd_profit="assets/icons/ic_rd_profit.png";
-  static const String ic_question_mark="assets/icons/ic_question_mark.png";
+  static const String ic_question_mark="assets/icons/ic_navigation.png";
 
 
 
