@@ -25,7 +25,7 @@ class Plans extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Purchase Quantity',style:GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
+            Text('Purchase Quantity',style:GoogleFonts.poppins(color: AppColors.primaryColor,fontSize: size==SecreenSize.small?10:null,fontWeight: FontWeight.bold),),
             Text(r'1 Package Price = $20USD',overflow: TextOverflow.ellipsis,style:GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal,fontSize: 8,),),
           ],
         ),
@@ -86,12 +86,12 @@ class Plans extends StatelessWidget {
               children: [
                 const ImageIcon(AssetImage(AppImages.ic_check),color: AppColors.secondaryColor,),
                 const SizedBox(width: 15,),
-                Expanded(child: Text(name,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontWeight: FontWeight.bold),))
+                Expanded(child: Text(name,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontSize: size==SecreenSize.small?10:null,fontWeight: FontWeight.bold),))
               ],
             ),
           ),
           
-          Expanded(flex:1,child: Text(amount,textAlign: TextAlign.end,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontWeight: FontWeight.bold),))
+          Expanded(flex:1,child: Text(amount,textAlign: TextAlign.end,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontSize: size==SecreenSize.small?12:null,fontWeight: FontWeight.bold),))
           
           
         ],

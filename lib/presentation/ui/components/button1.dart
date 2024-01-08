@@ -9,15 +9,15 @@ class MySimpleBotton extends StatelessWidget {
   Color color;
   double fontSize;
   double width;
-  double height;
+  double height,borderRadius;
   void Function()? onclick;
-  MySimpleBotton({required this.name,required this.width,required this.height,this.onclick,this.color=AppColors.secondaryColor,this.fontSize=14});
+  MySimpleBotton({required this.name,this.borderRadius=7,required this.width,required this.height,this.onclick,this.color=AppColors.secondaryColor,this.fontSize=14});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(onPressed: onclick,
 
-      style: ElevatedButton.styleFrom(fixedSize: Size(width, height),backgroundColor: color,shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(7))),
+      style: ElevatedButton.styleFrom(fixedSize: Size(width, height),backgroundColor: color,shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(borderRadius))),
     child: Text(name,style: TextStyle(color: Colors.white,fontSize: fontSize),)
     );
 

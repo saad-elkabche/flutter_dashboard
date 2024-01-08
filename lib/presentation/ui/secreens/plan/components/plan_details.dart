@@ -77,7 +77,7 @@ class PlanDetails extends StatelessWidget {
         children: [
           const ImageIcon(AssetImage(AppImages.ic_check),color: AppColors.secondaryColor,),
           const SizedBox(width: 15,),
-          Text(detail,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal,)),
+          Text(detail,style: GoogleFonts.poppins(color: Colors.black,fontSize:size==SecreenSize.small?12:null,fontWeight: FontWeight.normal,)),
         ]
       ),
     );

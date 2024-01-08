@@ -40,6 +40,11 @@ class AppImages{
 
 
 
+  static const String ic_doge_coin="assets/icons/ic_doge_coin.png";
+  static const String ic_light_coin="assets/icons/ic_light_coin.png";
+
+
+
   static const String ic_rd_affialiate="assets/icons/ic_rd_affiliat.png";
   static const String ic_rd_invest="assets/icons/ic_rd_invest.png";
   static const String ic_rd_money="assets/icons/ic_rd_money.png";

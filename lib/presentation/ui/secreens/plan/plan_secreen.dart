@@ -31,11 +31,11 @@ class _PlanSecreenState extends State<PlanSecreen> {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
-    return Center(child: Text('plan'),); /*ListView(
+    return ListView(
       children: [
-        SizedBox(height: 30,),
+        const SizedBox(height: 30,),
         if(size==SecreenSize.large)
-        PlandHeader(),
+        const PlandHeader(),
         const SizedBox(height: 15,),
 
         if(size!=SecreenSize.large)
@@ -55,7 +55,7 @@ class _PlanSecreenState extends State<PlanSecreen> {
 
 
       ],
-    );*/
+    );
   }
 
   Widget plans() {
