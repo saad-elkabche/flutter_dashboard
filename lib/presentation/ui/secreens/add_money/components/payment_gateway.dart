@@ -2,6 +2,8 @@ import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/components/button1.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
+import 'package:ayoub_baali/presentation/ui/components/drop_down_list.dart';
+import 'package:ayoub_baali/presentation/ui/components/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -43,7 +45,10 @@ class PaymentGateway extends StatelessWidget {
               ),
             ),
           ),
-          chooseGatway(),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: DropDownList(items: ['Litecoin','Dogecoin'], hint: 'Choose Gateway'),
+          ),
           const SizedBox(height: 30,),
           changeText('Limit 1.00 - 100000 USD'),
           const SizedBox(height: 2,),
@@ -79,16 +84,15 @@ class PaymentGateway extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text('Enter Amount',style: GoogleFonts.poppins(color: Colors.black),),
-          ),
+          Expanded(child: MyTextFormField(hint: 'Enter Amount',hintFontSize: 14,)),
+
           MySimpleBotton(name: 'USDT', fontSize: 10,width: 90, height: 40,onclick: (){},borderRadius: 4,)
         ],
       ),
 
     );
   }
+
 
   Widget header(String name){
     return Container(

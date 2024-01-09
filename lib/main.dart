@@ -39,7 +39,12 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           title: 'Dashboard',
           theme: ThemeData(
-            useMaterial3: true
+            useMaterial3: true,
+            textSelectionTheme:const  TextSelectionThemeData(
+              cursorColor: AppColors.secondaryColor,
+              selectionColor: AppColors.secondaryColor,
+              selectionHandleColor: AppColors.secondaryColor
+            )
           ),
           debugShowCheckedModeBanner: false,
           routerConfig: Routes.router,
