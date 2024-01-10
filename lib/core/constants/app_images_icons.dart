@@ -49,7 +49,7 @@ class AppImages{
   static const String ic_rd_invest="assets/icons/ic_rd_invest.png";
   static const String ic_rd_money="assets/icons/ic_rd_money.png";
   static const String ic_rd_profit="assets/icons/ic_rd_profit.png";
-  static const String ic_question_mark="assets/icons/ic_navigation.png";
+  static const String ic_question_mark="assets/icons/ic_question_mark.png";
 
 
 
