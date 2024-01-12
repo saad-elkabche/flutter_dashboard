@@ -7,6 +7,7 @@ class AppImages{
 
 
   static const String img_logo="assets/images/img_logo.png";
+  static const String img_qr_code="assets/images/img_qr_code.png";
 
 
 
@@ -50,6 +51,10 @@ class AppImages{
   static const String ic_rd_money="assets/icons/ic_rd_money.png";
   static const String ic_rd_profit="assets/icons/ic_rd_profit.png";
   static const String ic_question_mark="assets/icons/ic_question_mark.png";
+
+
+
+
 
 
 
