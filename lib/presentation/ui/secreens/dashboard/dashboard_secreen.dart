@@ -3,6 +3,7 @@
 import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/dashboard/components/actions.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/dashboard/components/earning_chart.dart';
@@ -31,35 +32,47 @@ class DashboardSecreen extends StatelessWidget {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
-    return ListView(
-      children: [
+    return Scaffold(
+      appBar: MyHeader(size: size,
+          name: 'Dashboard',
+          leading:const ImageIcon(AssetImage(AppImages.ic_home,)
+            ,color: AppColors.secondaryColor,) ,
+        mobActions: [
+          IconButton(onPressed:(){
+            TemplateState.scaffoldStateOf(context).currentState!.openDrawer();
+          } , icon: Image.asset(AppImages.ic_dashboard_mob))
+        ],
+      ),
+      body:  ListView(
+        children: [
 
-        SizedBox(height: 13,),
-       _getProfInfo(),
+          SizedBox(height: 13,),
+          _getProfInfo(),
 
-        const SizedBox(height: 40,),
+          const SizedBox(height: 40,),
 
-        if(size==SecreenSize.large)
-       _getAction(),
-
-
-        const SizedBox(height: 15,),
-
-        _getProfits(),
-        const SizedBox(height: 15,),
-        _getCharts(),
-
-        const SizedBox(height: 40,)
-
-
-
-
+          if(size==SecreenSize.large)
+            _getAction(),
 
 
+          const SizedBox(height: 15,),
+
+          _getProfits(),
+          const SizedBox(height: 15,),
+          _getCharts(),
+
+          const SizedBox(height: 40,)
 
 
 
-      ],
+
+
+
+
+
+
+        ],
+      ),
     );
 
 
@@ -68,7 +81,7 @@ class DashboardSecreen extends StatelessWidget {
 
 
   Widget _getProfInfo(){
-    if(size==SecreenSize.large) {
+    if(size==SecreenSize.large || size==SecreenSize.medium) {
       return Row(
         children: [
           Expanded(
@@ -142,17 +155,20 @@ class DashboardSecreen extends StatelessWidget {
     if(size==SecreenSize.large){
       return Row(
         children: [
-          Expanded(flex:2,child: StatisticsChart(height: 250,size: size,)),
-          Expanded(flex: 3,child: EarningChart(height: 250))
+          Expanded(flex:2,child: StatisticsChart(height: 350,size: size,)),
+          Expanded(flex: 3,child: EarningChart(height: 350,size: size,))
         ],
       );
     }
-    return Column(
-      children: [
-        StatisticsChart(height: 180,size: size,),
-        SizedBox(height: 15,),
-        EarningChart(height: 250)
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        children: [
+          StatisticsChart(height: 180,size: size,),
+          const SizedBox(height: 15,),
+          EarningChart(height: 280,size: size,)
+        ],
+      ),
     );
   }
 

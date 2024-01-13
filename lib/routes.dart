@@ -23,6 +23,7 @@ class Routes{
   static const String logout='/logout';
 
   static GoRouter router=GoRouter(
+
     initialLocation:dashboard,
       routes: [
         ShellRoute(

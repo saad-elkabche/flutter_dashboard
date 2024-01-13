@@ -43,8 +43,8 @@ class StatisticsChart extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              _singleProfit('Total Rewards', '50.00.00', true, false,false),
-                              _singleProfit('Network Member', '50.00.00', false, false,true),
+                              Expanded(child: _singleProfit('Total Rewards', '50.00.00', true, false,false)),
+                              Expanded(child: _singleProfit('Network Member', '50.00.00', false, false,true)),
                             ],
                           ),
                         )
@@ -56,7 +56,7 @@ class StatisticsChart extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(child: _singleProfit('Totla Withdraw', '50,00,00', true, true, false)),
+                        Expanded(child: _singleProfit('Total Withdraw', '50,00,00', true, true, false)),
                         Expanded(child: _singleProfit('Total Commision', '50,00,00', true, true, false)),
                         Expanded(child: _singleProfit('Monthly Incentive', '50,00,00', true, true, false)),
                         Expanded(child: _singleProfit('Total Network Sale', '50,00,00', false, true, true)),
@@ -78,29 +78,35 @@ class StatisticsChart extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Column(
-                            children: [
-                              Expanded(child: _singleProfit('Total Commision', '50,00,00', true, true, false)),
-                              Expanded(child: _singleProfit('Monthly Incentive', '50,00,00', true, true, false)),
-                            ],
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Expanded(child: _singleProfit('Total Commision', '50,00,00', true, true, false)),
+                                Expanded(child: _singleProfit('Monthly Incentive', '50,00,00', true, true, false)),
+                              ],
+                            ),
                           ),
                         ),
                         Expanded(
-                            child: Column(
-                              children: [
-                                Expanded(child: _singleProfit('Totla Withdraw', '50,00,00', true, true, false)),
-                                Expanded(child: _singleProfit('Total Network Sale', '50,00,00', false, true, true)),
-                              ],
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Expanded(child: _singleProfit('Totla Withdraw', '50,00,00', true, true, false)),
+                                  Expanded(child: _singleProfit('Total Network Sale', '50,00,00', false, true, true)),
+                                ],
+                              ),
                             ),
                         ),
-                        /*Expanded(
-                            child: Column(
-                              children: [
-                                Expanded(child: _singleProfit('Total Rewards', '50.00.00', true, false,false)),
-                                Expanded(child: _singleProfit('Network Member', '50.00.00', false, false,true)),
-                              ],
+                        Expanded(
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Expanded(child: _singleProfit('Total Rewards', '50.00.00', true, false,false)),
+                                  Expanded(child: _singleProfit('Network Member', '50.00.00', false, false,true)),
+                                ],
+                              ),
                             ),
-                        ),*/
+                        ),
                       ],
                     )
                 )
@@ -148,7 +154,10 @@ class StatisticsChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$name',style: GoogleFonts.poppins(fontSize: 9,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,),
+          Text('$name',style: GoogleFonts.poppins(color: Colors.black,fontSize: size==SecreenSize.small
+              ?10
+              :13,
+              fontWeight: FontWeight.w400),overflow: TextOverflow.ellipsis,),
           Row(
             children: [
               Icon(
@@ -160,7 +169,7 @@ class StatisticsChart extends StatelessWidget {
               if(isDollar)
               Text(r'$',style:GoogleFonts.poppins(color: Colors.green,fontSize: 10),),
 
-              Text(number,style:GoogleFonts.poppins(fontSize: 10),)
+              Text(number,style:GoogleFonts.poppins(fontSize: 11,color: AppColors.primaryColor),)
 
             ],
           )

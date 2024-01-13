@@ -16,7 +16,7 @@ class ReferrelLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return size==SecreenSize.small || size==SecreenSize.medium
+    return size==SecreenSize.small
         
         
         ?Center(
@@ -34,8 +34,11 @@ class ReferrelLink extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MySimpleBotton(name: 'My Referral link',height: 35,width: 130,fontSize: 10,onclick: (){},),
-                const Expanded(child: Text('https://abp.net/b/sdr3545tfs',overflow: TextOverflow.ellipsis,style: TextStyle(color: AppColors.primaryColor,fontSize: 10,fontWeight: FontWeight.bold),)),
+                MySimpleBotton(name: 'My Referral link',height: 35
+                  ,width: 120,
+                  fontSize: 9,
+                  onclick: (){},),
+                const Expanded(child: Text('https://abp.net/b/sdr3545tfs',textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: TextStyle(color: AppColors.primaryColor,fontSize: 10,fontWeight: FontWeight.bold),)),
                 MySimpleBotton(name: 'copy',height: 35,width: 75,fontSize: 10,onclick: (){},),
               ],
             ),

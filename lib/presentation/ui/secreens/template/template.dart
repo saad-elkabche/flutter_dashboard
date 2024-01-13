@@ -50,6 +50,7 @@ class _TemplateState extends State<Template> {
       height: height,
       width: width,
       size: size,
+      sacaffoldState: scaffoldState,
       child: SafeArea(
           child: size==SecreenSize.large
               ?Row(
@@ -66,11 +67,9 @@ class _TemplateState extends State<Template> {
   Widget _content(){
     return Scaffold(
       key: scaffoldState,
-      appBar: MyHeader(size: size,name:nameRoute,onMenuClicked: _onMenuClicked),
+      //appBar: MyHeader(size: size,name:nameRoute,onMenuClicked: _onMenuClicked),
       drawer:size!=SecreenSize.large?_menu():null ,
-      body:Center(
-        child: widget.child,
-      ),
+      body: widget.child,
       bottomNavigationBar: size!=SecreenSize.large?BottomNavigationBar(
           backgroundColor: AppColors.primaryColor,
 

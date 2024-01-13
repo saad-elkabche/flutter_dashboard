@@ -7,9 +7,10 @@ class TemplateState extends InheritedWidget{
   final SecreenSize size;
   double width;
   double height;
+  GlobalKey<ScaffoldState> sacaffoldState;
 
 
-  TemplateState({required super.child,required this.size,required this.height,required this.width});
+  TemplateState({required super.child,required this.sacaffoldState,required this.size,required this.height,required this.width});
 
 
 
@@ -20,6 +21,9 @@ class TemplateState extends InheritedWidget{
 
   static double widthOf(BuildContext context)=> context.dependOnInheritedWidgetOfExactType<TemplateState>()!.width;
 
+
+  static GlobalKey<ScaffoldState> scaffoldStateOf(BuildContext context)
+  =>context.dependOnInheritedWidgetOfExactType<TemplateState>()!.sacaffoldState;
 
 
   @override
