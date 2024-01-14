@@ -9,7 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PlanDetails extends StatelessWidget {
   SecreenSize size;
-  PlanDetails({required this.size}) ;
+  PlanContent planContent;
+
+  PlanDetails({required this.size,required this.planContent}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class PlanDetails extends StatelessWidget {
         Column(
           crossAxisAlignment:size==SecreenSize.large? CrossAxisAlignment.start:CrossAxisAlignment.center,
           children: [
-            Text('Flexible Plan',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold,fontSize: 18),),
+            Text('${planContent.planName}',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold,fontSize: 18),),
             Container(
               width: 100,
               height: 1.5,
@@ -28,26 +30,30 @@ class PlanDetails extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 15,width: double.infinity,),
-        Text('In this plan, your amount will be fixed for 24 months \nand you can earn up to 10% per  month with rewards and bonuses.',
+        Text(planContent.description,
           textAlign: size==SecreenSize.large?TextAlign.start:TextAlign.center,
           style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal,),
         ),
         const SizedBox(height: 15,),
         size==SecreenSize.medium
             ?
-            Column(
-          children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: Center(child: detail(r'Invest = 20$-10,000$'))),
-                Expanded(child: Center(child: detail(r'Lock Perios = 01 day to 365 days'))),
+                detail(planContent.features.elementAt(0)),
+                 detail(planContent.features.elementAt(1)),
               ],
             ),
+            SizedBox(width: 15,),
 
-            Row(
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: Center(child: detail(r'Profit Ratio = up to 7% monthly'))),
-                Expanded(child: Center(child: detail(r'Profit Ratio = upto 7% monthly'))),
+                detail(planContent.features.elementAt(2)),
+                detail(planContent.features.elementAt(3)),
               ],
             )
           ],
@@ -56,12 +62,7 @@ class PlanDetails extends StatelessWidget {
             Column(
 
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                detail(r'Invest = 20$-10,000$'),
-                detail(r'Profit Ratio = up to 7% monthly'),
-                detail(r'Profit Ratio = up to 7% monthly'),
-                detail(r'Profit Ratio = upto 7% monthly')
-              ],
+              children: List.generate(planContent.features.length, (index) => detail(planContent.features.elementAt(index))),
             )
 
 
@@ -82,4 +83,13 @@ class PlanDetails extends StatelessWidget {
       ),
     );
   }
+}
+
+class PlanContent{
+
+  String planName;
+  String description;
+  List<String> features;
+
+  PlanContent(this.planName, this.description, this.features);
 }

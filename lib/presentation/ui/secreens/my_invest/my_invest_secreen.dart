@@ -1,4 +1,7 @@
+import 'package:ayoub_baali/core/constants/app_color.dart';
+import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/my_invest/components/filters.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/my_invest/components/header.dart';
@@ -29,29 +32,53 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
-    return Center(
-      child:ListView(
-        children: [
-
-          SizedBox(height: 40,),
-          MyInvestHeader(currentIndex: currentIndex,onClick: onHeaderTap,size: size),
-          Filters(size: size),
-          orders(),
-          SizedBox(height: 25,),
-          MyInvestTable(
-            size: size,
-            items: [
-              Invest(amount: r'500.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
-              Invest(amount: r'1000.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
-              Invest(amount: r'1735.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
-              Invest(amount: r'7565.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
-              Invest(amount: r'10000.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
-            ],
-          ),
-          const SizedBox(height: 20,)
-
+    return Scaffold(
+      appBar: MyHeader(
+        name: size==SecreenSize.small?"My Investments":"Investment",
+        size: size,
+        leadingWidth: size==SecreenSize.medium?80:null,
+        leading: Row(
+          children: [
+            IconButton(onPressed: ()=>TemplateState.scaffoldStateOf(context).currentState!.openDrawer(),
+                icon:size==SecreenSize.small? Icon(Icons.arrow_back_ios,color: AppColors.secondaryColor,): Image.asset(AppImages.ic_dashboard_mob),
+            ),
+            if(size==SecreenSize.medium)
+              ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
+          ],
+        ),
+        mobActions: size==SecreenSize.small
+            ?const [ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,),SizedBox(width: 5,)]
+            :const [
+          ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
+          SizedBox(width: 5,),
+          Icon(Icons.arrow_forward_ios_outlined,color: AppColors.secondaryColor,),
+          SizedBox(width: 5,)
         ],
-      )
+      ),
+      body: Center(
+          child:ListView(
+            children: [
+
+              SizedBox(height: 40,),
+              MyInvestHeader(currentIndex: currentIndex,onClick: onHeaderTap,size: size),
+              Filters(size: size),
+              orders(),
+              SizedBox(height: 25,),
+              MyInvestTable(
+                size: size,
+                items: [
+                  Invest(amount: r'500.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
+                  Invest(amount: r'1000.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
+                  Invest(amount: r'1735.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
+                  Invest(amount: r'7565.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
+                  Invest(amount: r'10000.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
+                ],
+              ),
+              const SizedBox(height: 20,)
+
+            ],
+          )
+      ),
     );
   }
 
@@ -86,7 +113,7 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
                     child: Center(
                       child: Align(
                           alignment: Alignment.topRight,
-                          child: Icon(Icons.cancel_outlined,color: Colors.black87,)),
+                          child: ImageIcon(AssetImage(AppImages.ic_close),color: AppColors.primaryColor,)),
                     )
                 )
               ],

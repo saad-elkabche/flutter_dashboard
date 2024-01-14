@@ -27,7 +27,7 @@ class TradeCalculator extends StatelessWidget {
       child: Column(
         crossAxisAlignment:CrossAxisAlignment.start ,
         children: [
-          header('Trade Calculator'),
+          header(size==SecreenSize.large?'Trade Calculator':''),
           const SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.all(18.0),

@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+
 class Plans extends StatelessWidget {
+
+  int selectedIndex;
   SecreenSize size;
   void Function()? purchase;
-  Plans({required this.size,this.purchase});
+  void Function(int)? onSelectPlan;
+
+  Plans({required this.size,required this.onSelectPlan,required this.selectedIndex,this.purchase});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +22,18 @@ class Plans extends StatelessWidget {
       children: [
         if(size==SecreenSize.large)
           Text('CHOOSE A PLAN TO START',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold,fontSize: 20),),
+
+
         const SizedBox(height: 15,),
-        plan('Flexible PLAN', r'20$-10,000$', AppColors.primaryColor, Colors.white),
+
+        plan('Flexible PLAN', r'20$-10,000$',selectedIndex==0,()=>onSelectPlan?.call(0)),
+
         const SizedBox(height: 15,),
-        plan('Non-Flexible PLAN', r'20$-10,000$', Colors.white, AppColors.primaryColor),
+
+
+        plan('Non-Flexible PLAN', r'20$-10,000$',selectedIndex==1,()=>onSelectPlan?.call(1)),
+
+
         const SizedBox(height: 15,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,38 +76,43 @@ class Plans extends StatelessWidget {
       ],
     );
   }
-  
-  Widget plan(String name,String amount,Color color,Color textColor){
-    return Container(
-      height: 40,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(color: Colors.grey,offset: Offset(4,4),blurRadius: 15)
-        ]
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          
-          Expanded(
-            flex: 2,
-            child: Row(
-              children: [
-                const ImageIcon(AssetImage(AppImages.ic_check),color: AppColors.secondaryColor,),
-                const SizedBox(width: 15,),
-                Expanded(child: Text(name,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontSize: size==SecreenSize.small?10:null,fontWeight: FontWeight.bold),))
-              ],
+
+
+
+  Widget plan(String name,String amount,bool isSelected,VoidCallback onclick){
+    return GestureDetector(
+      onTap: onclick,
+      child: Container(
+        height: 40,
+        padding:const EdgeInsets.symmetric(horizontal: 15),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: isSelected?AppColors.primaryColor:Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(color: Colors.grey,offset: Offset(4,4),blurRadius: 15)
+          ]
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+
+            Expanded(
+              flex: 2,
+              child: Row(
+                children: [
+                  const ImageIcon(AssetImage(AppImages.ic_check),color: AppColors.secondaryColor,),
+                  const SizedBox(width: 15,),
+                  Expanded(child: Text(name,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: isSelected?Colors.white:AppColors.primaryColor,fontSize: size==SecreenSize.small?10:null,fontWeight: FontWeight.bold),))
+                ],
+              ),
             ),
-          ),
-          
-          Expanded(flex:1,child: Text(amount,textAlign: TextAlign.end,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color: textColor,fontSize: size==SecreenSize.small?12:null,fontWeight: FontWeight.bold),))
-          
-          
-        ],
+
+            Expanded(flex:1,child: Text(amount,textAlign: TextAlign.end,overflow:TextOverflow.ellipsis,style: GoogleFonts.poppins(color:isSelected?Colors.white:AppColors.primaryColor,fontSize: size==SecreenSize.small?12:null,fontWeight: FontWeight.bold),))
+
+
+          ],
+        ),
       ),
     );
   }

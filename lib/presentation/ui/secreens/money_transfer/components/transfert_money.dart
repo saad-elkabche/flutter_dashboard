@@ -45,9 +45,9 @@ class TransfertMoney extends StatelessWidget {
                   ],
                 ),
 
-            changeText('Limit 1.00 - 100000 USD'),
+            changeText('Limit 0.00000 USDT - 500000.0000 USDT'),
             const SizedBox(height: 2,),
-            changeText("change USD = 1%"),
+            changeText("chanrge 0.0000 USDT - 2.0000%"),
             const SizedBox(height: 20,),
             MyCustomButton(name: 'Proceed',
               color: size==SecreenSize.large?AppColors.secondaryColor:AppColors.primaryColor,
@@ -73,7 +73,7 @@ class TransfertMoney extends StatelessWidget {
              ) ,
            ),
            SizedBox(width: 10,),
-           Text(text,style: GoogleFonts.poppins(color: Colors.black),),
+           Text(text,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.w500),),
          ],
        ),
      );
@@ -99,7 +99,7 @@ class TransfertMoney extends StatelessWidget {
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
 
-                 Expanded(child: MyTextFormField(hint: 'Enter Amount',hintFontSize: 14,)),
+                 Expanded(child: MyTextFormField(hint: 'Enter Amount',textInputType: TextInputType.number,hintFontSize: 14,)),
                  MySimpleBotton(name: 'USDT', fontSize: 10,width: 90, height: 40,onclick: (){},borderRadius: 4,)
                ],
              ),

@@ -14,7 +14,8 @@ import 'package:google_fonts/google_fonts.dart';
 class PaymentGateway extends StatelessWidget {
   SecreenSize size;
   double height;
-   PaymentGateway({required this.size,required this.height});
+  void Function()? onClick;
+   PaymentGateway({required this.size,this.onClick,required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +64,7 @@ class PaymentGateway extends StatelessWidget {
          MyCustomButton(name: 'Proceed',
            color: size==SecreenSize.large?AppColors.secondaryColor:AppColors.primaryColor,
            textColor: Colors.white,
+           onClick: onClick,
            height: 40,),
           const SizedBox(height: 30,)
         ],
@@ -84,7 +86,7 @@ class PaymentGateway extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          Expanded(child: MyTextFormField(hint: 'Enter Amount',hintFontSize: 14,)),
+          Expanded(child: MyTextFormField(hint: 'Enter Amount',textInputType: TextInputType.number,hintFontSize: 14,)),
 
           MySimpleBotton(name: 'USDT', fontSize: 10,width: 90, height: 40,onclick: (){},borderRadius: 4,)
         ],

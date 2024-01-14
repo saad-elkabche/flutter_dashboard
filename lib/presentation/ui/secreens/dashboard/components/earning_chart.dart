@@ -81,7 +81,7 @@ class EarningChart extends StatelessWidget {
 
 
 
-                                            return Text('$title');
+                                            return Text('$title',style: GoogleFonts.poppins(fontWeight: FontWeight.normal,color: Colors.black,fontSize: size==SecreenSize.small?7:11),);
                                           }
                                       )
                                   )

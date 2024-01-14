@@ -1,4 +1,7 @@
+import 'package:ayoub_baali/core/constants/app_color.dart';
+import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/transaction/components/order_by.dart';
@@ -22,16 +25,38 @@ class TransactionSecreen extends StatelessWidget {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
-    return ListView(
-      children: [
-        const SizedBox(height: 40,),
-        TransactionHeader(size: size),
-        const SizedBox(height: 20,),
-        orders(),
-        SizedBox(height: 25,),
-        TransactionTable(size: size),
-        SizedBox(height: 25,),
-      ],
+    return Scaffold(
+      appBar: MyHeader(
+          name:'Transactions',
+          size: size,
+          leadingWidth: size!=SecreenSize.large?80:null,
+          leading: Row(
+            children: [
+              IconButton(
+                  onPressed: ()=>TemplateState.scaffoldStateOf(context).currentState!.openDrawer(),
+                  icon: Image.asset(AppImages.ic_dashboard_mob)
+              ),
+              const ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
+            ],
+          ),
+
+          mobActions:const [
+            ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
+            Icon(Icons.arrow_forward_ios,color: AppColors.secondaryColor,),
+            SizedBox(width: 5,)
+          ]
+      ) ,
+      body:  ListView(
+        children: [
+          const SizedBox(height: 40,),
+          TransactionHeader(size: size),
+          const SizedBox(height: 20,),
+          orders(),
+          SizedBox(height: 25,),
+          TransactionTable(size: size),
+          SizedBox(height: 25,),
+        ],
+      ),
     );
   }
 
@@ -65,7 +90,8 @@ class TransactionSecreen extends StatelessWidget {
                     child: Center(
                       child: Align(
                           alignment: Alignment.topRight,
-                          child: Icon(Icons.cancel_outlined,color: Colors.black87,)),
+                          child: ImageIcon(AssetImage(AppImages.ic_close),color: AppColors.primaryColor,)
+                      ),
                     )
                 )
               ],

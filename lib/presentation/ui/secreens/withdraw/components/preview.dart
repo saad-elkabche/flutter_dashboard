@@ -34,11 +34,9 @@ class Preview extends StatelessWidget {
             if(size!=SecreenSize.large)
             Text('Preview',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
             SizedBox(height: 40,),
-            item('Request Amount'),
-            item('Exchange Rate'),
-            item('Fees'),
-            item('Total Payable'),
-            item('You Will Get',false),
+            item('Withdraw Amount','0 USDT'),
+            item('Fees Rate','0.01 + 0=0'),
+            item('Total','O USDT'),
           ],
         )
     );
@@ -54,7 +52,7 @@ class Preview extends StatelessWidget {
     );
   }
 
-  Widget item(String name,[bool withDvider=true]){
+  Widget item(String name,String value,[bool withDvider=true]){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -64,7 +62,7 @@ class Preview extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(name,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal),),
-              Text('---',style: GoogleFonts.poppins(),)
+              Text(value,style: GoogleFonts.poppins(),)
             ],
           ),
           SizedBox(height: 12),

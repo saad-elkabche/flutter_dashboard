@@ -1,6 +1,8 @@
 import 'package:ayoub_baali/core/constants/app_color.dart';
+import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/components/button1.dart';
+import 'package:ayoub_baali/presentation/ui/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +22,7 @@ class PlanConfirmation extends StatelessWidget {
       child: Align(
         alignment: Alignment.topCenter,
         child: Container(
+          margin: EdgeInsets.only(top: 60),
           width:size==SecreenSize.large?largeWidth: smallWidth,
           height:290 ,
           padding:const EdgeInsets.all(8),
@@ -38,17 +41,18 @@ class PlanConfirmation extends StatelessWidget {
                 mainAxisAlignment:MainAxisAlignment.spaceBetween ,
                 children: [
                       Text('Confirmation',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold,fontSize: 18)),
-                  Icon(Icons.cancel_outlined,color: AppColors.primaryColor,)
+                 const ImageIcon(AssetImage(AppImages.ic_close),color: AppColors.primaryColor,)
                 ],
               ),
               const SizedBox(height: 15,),
-              Container(width: 200,height: 1,color: AppColors.secondaryColor,),
+
+               MySeparator(height: 1,color: AppColors.secondaryColor),
               const SizedBox(height: 15,),
               Text('Are you sure to subscribe this plan?',style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.bold,)),
               const SizedBox(height: 15,),
               Text('If you subscribe to this one. your old limitation will \nreset according to this package',style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal,)),
               const SizedBox(height: 15,),
-              Container(width: 200,height: 1,color: AppColors.secondaryColor,),
+               MySeparator(height: 1,color: AppColors.secondaryColor),
               const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

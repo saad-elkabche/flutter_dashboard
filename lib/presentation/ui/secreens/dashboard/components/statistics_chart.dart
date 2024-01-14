@@ -73,8 +73,11 @@ class StatisticsChart extends StatelessWidget {
           height: height,
             child: Row(
               children: [
-                _circle(),
                 Expanded(
+                    flex: 2,
+                    child: _circle()),
+                Expanded(
+                  flex: 4,
                     child: Row(
                       children: [
                         Expanded(
@@ -120,12 +123,13 @@ class StatisticsChart extends StatelessWidget {
 
   Widget _circle(){
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.all(7.0),
           child:  CircularPercentIndicator(
-            radius: size==SecreenSize.large?60.0:55.0,
-            lineWidth: 5.0,
+            radius: size==SecreenSize.large?60.0:size==SecreenSize.medium?55.0:40,
+            lineWidth: 7.0,
             percent: 0.85,
             linearGradient:const LinearGradient(
                 colors: [
@@ -136,15 +140,16 @@ class StatisticsChart extends StatelessWidget {
             center:  Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Next Rank',style: GoogleFonts.acme(fontSize: 17,fontWeight: FontWeight.bold,color: AppColors.primaryColor),),
+                Text('Next Rank',style: GoogleFonts.acme(fontSize:size==SecreenSize.small?12: 17,fontWeight: FontWeight.bold,color: AppColors.primaryColor),),
                 SizedBox(height: 10,),
-                Text("85%",style: GoogleFonts.acme(fontSize: 20,color: Colors.green))
+                Text("85%",style: GoogleFonts.acme(fontSize:size==SecreenSize.small?15: 20,color: Colors.green))
               ],
             ) ,
 
           ),
         ),
-        Text('You Have Complete the Next Rank',textAlign: TextAlign.center,style: GoogleFonts.poppins(color: Colors.black,fontSize: 10),)
+        SizedBox(height: 5,),
+        Text('You Have Complete the Next Rank',textAlign: TextAlign.center,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,color: Colors.black,fontSize: 10),)
       ],
     );
   }
@@ -169,7 +174,7 @@ class StatisticsChart extends StatelessWidget {
               if(isDollar)
               Text(r'$',style:GoogleFonts.poppins(color: Colors.green,fontSize: 10),),
 
-              Text(number,style:GoogleFonts.poppins(fontSize: 11,color: AppColors.primaryColor),)
+              Expanded(child: Text(number,overflow: TextOverflow.ellipsis,style:GoogleFonts.poppins(fontSize: 11,color: AppColors.primaryColor),))
 
             ],
           )

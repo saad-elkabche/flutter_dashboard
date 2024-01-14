@@ -12,11 +12,12 @@ class MyHeader extends StatelessWidget implements PreferredSizeWidget {
   SecreenSize size;
   Widget? leading;
   List<Widget>? mobActions;
+  double? leadingWidth;
 
   void Function()? onMenuClicked;
 
 
-  MyHeader({required this.name,this.leading,this.mobActions,required this.size,this.onMenuClicked});
+  MyHeader({required this.name,this.leadingWidth,this.leading,this.mobActions,required this.size,this.onMenuClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class MyHeader extends StatelessWidget implements PreferredSizeWidget {
       centerTitle:size!=SecreenSize.large,
       elevation: 0,
       toolbarHeight: 80,
+      leadingWidth: leadingWidth,
       leading:size!=SecreenSize.large?leading:null,
       actions:size!=SecreenSize.large
 

@@ -18,7 +18,9 @@ class PaymentGateway extends StatelessWidget {
 
   SecreenSize size;
   double height;
-   PaymentGateway({required this.size,required this.height});
+  VoidCallback? onclick;
+
+   PaymentGateway({required this.size,required this.height,this.onclick});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,9 @@ class PaymentGateway extends StatelessWidget {
          MyCustomButton(name: 'Proceed',
            color: AppColors.secondaryColor,
            textColor: Colors.white,
-           height: 40,),
+           height: 40,
+            onClick: onclick,
+         ),
           const SizedBox(height: 30,)
         ],
       ),
@@ -77,7 +81,7 @@ class PaymentGateway extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Amount(USD)',style: GoogleFonts.poppins(color:Colors.black),),
+          Text('Amount(USD)',style: GoogleFonts.poppins(color:Colors.black,fontWeight: FontWeight.bold),),
           const SizedBox(height: 10,),
           Container(
             width: double.infinity,
@@ -90,7 +94,7 @@ class PaymentGateway extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Expanded(child: MyTextFormField(hint: 'Enter Amount',hintFontSize: 14,)),
+                Expanded(child: MyTextFormField(hint: '0',textInputType: TextInputType.number,isBoldHint: false,hintFontSize: 14,)),
               ],
             ),
 
@@ -109,7 +113,7 @@ class PaymentGateway extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Address',style: GoogleFonts.poppins(color:Colors.black),),
+          Text(' Payment Address',style: GoogleFonts.poppins(color:Colors.black,fontWeight: FontWeight.bold),),
           const SizedBox(height: 10,),
           Container(
             width: double.infinity,
@@ -122,7 +126,7 @@ class PaymentGateway extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Expanded(child: MyTextFormField(hint: 'Enter your payment Address',hintFontSize: 14,)),
+                Expanded(child: MyTextFormField(hint: 'Enter your payment Address',isBoldHint: false,hintFontSize: 14,)),
               ],
             ),
 
@@ -153,7 +157,7 @@ class PaymentGateway extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Payement Gateway',style: GoogleFonts.poppins(color:Colors.black),),
+          Text('Payement Gateway',style: GoogleFonts.poppins(color:Colors.black,fontWeight: FontWeight.bold),),
           const SizedBox(height: 10,),
           DropDownList(items: const ['Litecoin','Dogecoin'],hint: 'Choose Gateway',),
         ],

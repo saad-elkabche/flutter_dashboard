@@ -54,6 +54,12 @@ class AppImages{
 
 
 
+  static const String ic_person="assets/icons/ic_person.png";
+  static const String ic_notification="assets/icons/ic_notification.png";
+  static const String ic_close="assets/icons/ic_close.png";
+
+
+
 
 
 

@@ -1,4 +1,7 @@
+import 'package:ayoub_baali/core/constants/app_color.dart';
+import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/kyc_verification/components/kyc_form.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/kyc_verification/components/kyc_title.dart';
@@ -20,26 +23,48 @@ class KycVerificationSecreen extends StatelessWidget {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
-    return ListView(
-      children: [
-        KycWarning(),
-        const SizedBox(height: 20,),
-        Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: KycTitle(size: size),
-        ),
-        const SizedBox(height: 25,),
-        size==SecreenSize.small
-            ?
-        KYCForm(size: size)
-            :
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: MainContainer(child: KYCForm(size: size,)),
-            ),
-        SizedBox(height: 40,),
+    return Scaffold(
+      appBar: MyHeader(
+          name:'KYC Verification',
+          size: size,
+          leadingWidth: size!=SecreenSize.large?80:null,
+          leading: Row(
+            children: [
+              IconButton(
+                  onPressed: ()=>TemplateState.scaffoldStateOf(context).currentState!.openDrawer(),
+                  icon: Image.asset(AppImages.ic_dashboard_mob)
+              ),
+              const ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
+            ],
+          ),
 
-      ],
+          mobActions:const [
+            ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
+            Icon(Icons.arrow_forward_ios,color: AppColors.secondaryColor,),
+            SizedBox(width: 5,)
+          ]
+      ),
+      body:  ListView(
+        children: [
+          KycWarning(),
+          const SizedBox(height: 20,),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: KycTitle(size: size),
+          ),
+          const SizedBox(height: 25,),
+          size==SecreenSize.small
+              ?
+          KYCForm(size: size)
+              :
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: MainContainer(child: KYCForm(size: size,)),
+          ),
+          const SizedBox(height: 40,),
+
+        ],
+      ),
     );
   }
 }
