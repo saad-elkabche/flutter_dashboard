@@ -8,6 +8,37 @@ class AppImages{
 
   static const String img_logo="assets/images/img_logo.png";
   static const String img_qr_code="assets/images/img_qr_code.png";
+  static const String img_web_first_section="assets/images/img_web_first_section.png";
+
+
+  static const String imgOneThirdSection="assets/images/img_one_3_section.png";
+  static const String imgTwoThirdsection="assets/images/img_two_3_section.png";
+
+
+  static const String img_decoration_web="assets/images/img_back_decoration.png";
+
+
+
+
+  static const String img1="assets/images/img1.png";
+  static const String img2="assets/images/img2.png";
+  static const String img3="assets/images/img3.png";
+  static const String img4="assets/images/img4.png";
+  static const String img5="assets/images/img5.png";
+  static const String img6="assets/images/img6.png";
+
+
+
+  static const String img_strong="assets/images/img_strong_security.png";
+  static const String img_instant_withdraw="assets/images/img_instant_withdraw.png";
+  static const String img_fully_transparancy="assets/images/img_fully_transparency.png";
+
+
+
+
+  static const String img_1_section_4="assets/images/img_1_section_4.png";
+  static const String img_2_section_4="assets/images/img_2_section_4.png";
+  static const String img_3_section_4="assets/images/img_3_section_4.png";
 
 
 
@@ -57,6 +88,12 @@ class AppImages{
   static const String ic_person="assets/icons/ic_person.png";
   static const String ic_notification="assets/icons/ic_notification.png";
   static const String ic_close="assets/icons/ic_close.png";
+
+
+
+  static const String ic_profit_ratio="assets/icons/ic_profit_ratio.png";
+  static const String ic_profit="assets/icons/ic_profit.png";
+  static const String ic_invest="assets/icons/ic_invest.png";
 
 
 

@@ -2,6 +2,8 @@
 
 import 'package:ayoub_baali/presentation/ui/secreens/logout/logout_secreen.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/secreens.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/landing_page.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template.dart';
 import 'package:go_router/go_router.dart';
 
 class Routes{
@@ -22,10 +24,36 @@ class Routes{
   static const String withdraw='/withdraw';
   static const String logout='/logout';
 
+
+
+  //web
+  static const String landing='/';
+
   static GoRouter router=GoRouter(
 
-    initialLocation:dashboard,
+    initialLocation:landing,
       routes: [
+
+
+
+
+
+        ShellRoute(
+          pageBuilder: (context,state,child){
+            return NoTransitionPage(child: WebTemplate(child: child));
+          },
+            routes:[
+              GoRoute(
+                  path: landing,
+                  pageBuilder: (context,state)=>NoTransitionPage(child: LandingPage())
+              ),
+            ]
+        ),
+
+
+
+
+
         ShellRoute(
           pageBuilder: (context,state,child){
             return NoTransitionPage(child: Template(child: child));
