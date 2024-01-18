@@ -3,6 +3,7 @@
 import 'package:ayoub_baali/presentation/ui/secreens/logout/logout_secreen.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/secreens.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/landing_page.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/signup/signup_page.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,6 +29,7 @@ class Routes{
 
   //web
   static const String landing='/';
+  static const String signup='/signup';
 
   static GoRouter router=GoRouter(
 
@@ -46,6 +48,10 @@ class Routes{
               GoRoute(
                   path: landing,
                   pageBuilder: (context,state)=>NoTransitionPage(child: LandingPage())
+              ),
+              GoRoute(
+                  path: signup,
+                  pageBuilder: (context,state)=>NoTransitionPage(child: SignUpPage())
               ),
             ]
         ),

@@ -10,6 +10,7 @@ class WebTemplateState extends InheritedWidget{
   double height;
 
   Widget header;
+  Widget footer;
 
 
 
@@ -27,13 +28,16 @@ class WebTemplateState extends InheritedWidget{
   static Widget headerOf(BuildContext context)=>
   context.dependOnInheritedWidgetOfExactType<WebTemplateState>()!.header;
 
+  static Widget footerOf(BuildContext context)=>
+  context.dependOnInheritedWidgetOfExactType<WebTemplateState>()!.footer;
 
 
 
 
 
 
-  WebTemplateState({required this.width,required this.header,required this.size,required this.height,required super.child});
+
+  WebTemplateState({required this.width,required this.footer,required this.header,required this.size,required this.height,required super.child});
 
   @override
   bool updateShouldNotify(covariant WebTemplateState oldWidget) {

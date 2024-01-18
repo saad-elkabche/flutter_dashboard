@@ -1,9 +1,11 @@
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/web_footer.dart';
 import 'package:ayoub_baali/presentation/ui/components/web_header.dart';
 
 import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template_state.dart';
 import 'package:ayoub_baali/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -36,11 +38,11 @@ class WebTemplate extends StatelessWidget {
         width: width,
         size: size,
         height: height,
-        child:child,
+        footer: WebFooter(size: size),
       header: WebHeader(size: size,
         onclick: onMenuSelected,
         onLogin:onLogin,
-        onSignUp: onSignUp,
+        onSignUp:()=> onSignUp(context),
         items: [
           MenuItem('Home', Routes.landing),
           MenuItem('About Us', Routes.landing),
@@ -50,6 +52,7 @@ class WebTemplate extends StatelessWidget {
           MenuItem('Download', Routes.landing),
         ],
       ),
+      child:child,
     );
   }
 
@@ -63,8 +66,8 @@ class WebTemplate extends StatelessWidget {
   void onLogin(){
     print('login');
   }
-  void onSignUp(){
-    print('signUp');
+  void onSignUp(BuildContext context){
+    GoRouter.of(context).go(Routes.signup);
   }
 
 }

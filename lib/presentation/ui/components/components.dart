@@ -2,7 +2,7 @@ export 'main_container.dart';
 
 export 'button.dart';
 export 'text_button.dart';
-export 'text_field.dart';
+//export 'text_field.dart';
 export 'responsive_widget.dart';
 
 //export 'dialogue_infos.dart';

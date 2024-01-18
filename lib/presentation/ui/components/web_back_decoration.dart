@@ -7,6 +7,7 @@ class WebBackDecoration extends StatelessWidget {
 
   double decorationHeight;
   double containerHeight;
+  bool isPortrait;
 
   Widget child;
 
@@ -16,6 +17,7 @@ class WebBackDecoration extends StatelessWidget {
   WebBackDecoration({
     required this.decorationHeight,
     required this.containerHeight,
+    this.isPortrait=false,
     required this.child
 });
 
@@ -35,8 +37,8 @@ class WebBackDecoration extends StatelessWidget {
             width: double.infinity,
             height: decorationHeight,
             clipBehavior: Clip.none,
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(AppImages.img_decoration_web),fit: BoxFit.fill),
+            decoration:  BoxDecoration(
+              image: DecorationImage(image: AssetImage(isPortrait?AppImages.img_portrait_decoration:AppImages.img_decoration_web),fit: BoxFit.fill),
             ),
           ),
           child

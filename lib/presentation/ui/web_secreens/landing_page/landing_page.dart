@@ -1,5 +1,7 @@
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/web_footer.dart';
 import 'package:ayoub_baali/presentation/ui/components/web_header.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/first_section.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/plans_section.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/referral_program.dart';
@@ -7,6 +9,7 @@ import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/second_section.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/section_foor.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/section_three.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components/why_need_to_join_ebp.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template_state.dart';
 import 'package:ayoub_baali/routes.dart';
 import 'package:flutter/material.dart';
@@ -42,8 +45,10 @@ class LandingPage extends StatelessWidget {
           SafetySecurity(size: size,),
           const SizedBox(height: 26,),
           SectionFour(size: size,width: width,),
-          const SizedBox(height: 26,),
-
+          const SizedBox(height: 66,),
+          WhyNeedJoinUs(size: size, width: width),
+          const SizedBox(height: 66,),
+          WebTemplateState.footerOf(context)
         ],
       )
     );

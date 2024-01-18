@@ -29,6 +29,15 @@ class AppImages{
 
 
 
+  static const String imgTabHeader="assets/images/img_tab_header.png";
+  static const String imgPhoneHeader="assets/images/img_phone_header.png";
+
+
+
+  static const String img_logo_1="assets/images/img_logo1.png";
+
+
+
   static const String img_strong="assets/images/img_strong_security.png";
   static const String img_instant_withdraw="assets/images/img_instant_withdraw.png";
   static const String img_fully_transparancy="assets/images/img_fully_transparency.png";
@@ -39,6 +48,13 @@ class AppImages{
   static const String img_1_section_4="assets/images/img_1_section_4.png";
   static const String img_2_section_4="assets/images/img_2_section_4.png";
   static const String img_3_section_4="assets/images/img_3_section_4.png";
+
+
+  static const String img_sign_up="assets/images/img_signup.png";
+
+  static const String img_portrait_decoration="assets/images/img_protrait_decoration.png";
+
+
 
 
 
@@ -94,6 +110,26 @@ class AppImages{
   static const String ic_profit_ratio="assets/icons/ic_profit_ratio.png";
   static const String ic_profit="assets/icons/ic_profit.png";
   static const String ic_invest="assets/icons/ic_invest.png";
+
+
+
+  static const String ic_play_store="assets/icons/ic_play_store.png";
+  static const String ic_app_store="assets/icons/ic_app_store.png";
+
+
+
+
+
+  static const String ic_instagram="assets/icons/ic_instagram.png";
+  static const String ic_facebook="assets/icons/ic_face.png";
+  static const String ic_linkdin="assets/icons/ic_linkdin.png";
+  static const String ic_twitter="assets/icons/ic_twitter.png";
+
+
+  static const String ic_eye="assets/icons/ic_eye.png";
+
+
+
 
 
 

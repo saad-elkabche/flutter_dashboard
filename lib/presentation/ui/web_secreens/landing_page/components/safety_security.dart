@@ -16,8 +16,9 @@ class SafetySecurity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WebBackDecoration(
-        decorationHeight:size==SecreenSize.large?650:size==SecreenSize.medium?1000:1400,
-        containerHeight: size==SecreenSize.large?650:size==SecreenSize.medium?1000:1400,
+        decorationHeight:size==SecreenSize.large?650:size==SecreenSize.medium?1000:1100,
+        containerHeight: size==SecreenSize.large?650:size==SecreenSize.medium?1000:1100,
+        isPortrait: size==SecreenSize.small,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
