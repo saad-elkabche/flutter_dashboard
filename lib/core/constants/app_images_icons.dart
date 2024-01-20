@@ -59,6 +59,22 @@ class AppImages{
 
 
 
+  static const String imgAboutUsHeader="assets/images/img_about_us.png";
+  static const String imgAboutUs="assets/images/img_about_us_1.png";
+  static const String img_marketing="assets/images/img_marketing.png";
+
+
+
+  static const String img_forget_pass="assets/images/img_forget_pass.png";
+
+
+  static const String imgPrivacyPolicy="assets/images/img_privacy_policy.png";
+
+
+
+
+
+
 
 
 
@@ -127,6 +143,16 @@ class AppImages{
 
 
   static const String ic_eye="assets/icons/ic_eye.png";
+
+
+
+
+
+
+  static const String ic_user_check="assets/icons/ic_user_checked.png";
+  static const String ic_file="assets/icons/ic_file.png";
+  static const String ic_referral_link="assets/icons/ic_attach.png";
+  static const String ic_account_twitter="assets/icons/ic_account_twitter.png";
 
 
 

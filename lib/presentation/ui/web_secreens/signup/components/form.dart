@@ -11,9 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 class SignForm extends StatelessWidget {
   SecreenSize size;
   VoidCallback? register;
+  VoidCallback? forgetPass;
 
 
-  SignForm({required this.size,this.register});
+
+  SignForm({required this.size,this.register,this.forgetPass});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +111,7 @@ class SignForm extends StatelessWidget {
 
           const SizedBox(height: 15,),
 
-          if(size!=SecreenSize.large)
+          //if(size!=SecreenSize.large)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -123,7 +125,9 @@ class SignForm extends StatelessWidget {
               ),
 
 
-              Text('Forget Password?',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),)
+              GestureDetector(
+                  onTap: ()=>forgetPass?.call(),
+                  child: Text('Forget Password?',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),))
 
 
             ],

@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          if(size==SecreenSize.large)
+          //if(size==SecreenSize.large)
           WebTemplateState.headerOf(context),
 
 
@@ -39,7 +39,9 @@ class SignUpPage extends StatelessWidget {
 
           SizedBox(height: 60,),
 
-          SignForm(size: size,register: ()=>GoRouter.of(context).go(Routes.dashboard)),
+          SignForm(size: size,
+              forgetPass: ()=>GoRouter.of(context).go(Routes.forgetPass),
+              register: ()=>GoRouter.of(context).go(Routes.dashboard)),
 
 
           if(size==SecreenSize.large)
@@ -52,7 +54,7 @@ class SignUpPage extends StatelessWidget {
 
 
           SizedBox(height: 60,),
-          if(size==SecreenSize.large)
+         // if(size==SecreenSize.large)
           WebTemplateState.footerOf(context),
         ],
       ),

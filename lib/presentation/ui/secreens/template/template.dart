@@ -121,6 +121,10 @@ class _TemplateState extends State<Template> {
           MenuItem('Support', Routes.support, AppImages.ic_support),
           MenuItem('KYC verification', Routes.kycVerification, AppImages.ic_kyc),
           MenuItem('2FA Security', Routes.faSecurity, AppImages.ic_2fa),
+
+          //MenuItem('Membership', Routes.membership, AppImages.ic_2fa),
+          //MenuItem('Achievment', Routes.achievements, AppImages.ic_2fa),
+
           MenuItem('Change Password', Routes.changePass, AppImages.ic_change_pass),
           MenuItem('Profile', Routes.profile, AppImages.ic_profile),
           MenuItem('Logout', Routes.logout, AppImages.ic_logout),

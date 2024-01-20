@@ -11,7 +11,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class WebFooter extends StatelessWidget {
   SecreenSize size;
-  WebFooter({required this.size});
+  VoidCallback? onPrivacyClick;
+
+  WebFooter({required this.size,this.onPrivacyClick});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,9 @@ class WebFooter extends StatelessWidget {
           color: AppColors.secondaryColor,
         ),
         const SizedBox(height: 15,),
-        Text('Privacy Policy',style: GoogleFonts.poppins(color: Colors.white,fontWeight:FontWeight.normal ),),
+        GestureDetector(
+            onTap: ()=>onPrivacyClick?.call(),
+            child: Text('Privacy Policy',style: GoogleFonts.poppins(color: Colors.white,fontWeight:FontWeight.normal ),)),
         const SizedBox(height: 15,),
         Text('Refund Policy',style: GoogleFonts.poppins(color: Colors.white,fontWeight:FontWeight.normal ),),
       ],

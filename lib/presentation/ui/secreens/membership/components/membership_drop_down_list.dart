@@ -6,21 +6,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class DropDownList extends StatefulWidget {
+class MemberShipDropDownList extends StatefulWidget {
 
-  List<String> items;
+  Map<String,String> items;
   String hint;
   Color color,dividerColor;
   Color? borderColor;
 
-  DropDownList({required this.items,this.borderColor,this.color=AppColors.secondaryColor,this.dividerColor=Colors.white,required this.hint}) ;
+  MemberShipDropDownList({required this.items,this.borderColor,this.color=AppColors.secondaryColor,this.dividerColor=Colors.white,required this.hint}) ;
 
 
   @override
-  State<DropDownList> createState() => _DropDownListState();
+  State<MemberShipDropDownList> createState() => _MemberShipDropDownListState();
 }
 
-class _DropDownListState extends State<DropDownList> {
+class _MemberShipDropDownListState extends State<MemberShipDropDownList> {
 
   int? currentIndex;
 
@@ -49,21 +49,29 @@ class _DropDownListState extends State<DropDownList> {
           dropdownColor:widget.color,
           underline: Container(),
           value:currentIndex ,
-
-          items: List.generate(widget.items.length, (index) =>
-              chooseItem(widget.items.elementAt(index), index==currentIndex,index,index!=widget.items.length-1)),
+          items: List.generate(widget.items.length,(index){
+            String key=widget.items.keys.elementAt(index);
+            return chooseItem(key,widget.items[key]!, index==currentIndex,index,index!=widget.items.length-1);
+          })
         )
     );
   }
 
-  DropdownMenuItem chooseItem(String name,bool isSelected,int index,[bool withDivider=true]){
+  DropdownMenuItem chooseItem(String name,String value,bool isSelected,int index,[bool withDivider=true]){
     return DropdownMenuItem(
       value: index,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment:CrossAxisAlignment.start ,
         children: [
-          Text('$name',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontWeight: FontWeight.normal),),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('$name',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: 10,fontWeight: FontWeight.normal),),
+              Text('$value',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: 10,fontWeight: FontWeight.normal),),
+
+            ],
+          ),
           const SizedBox(height: 5,),
           if(withDivider && !isSelected)
             Container(

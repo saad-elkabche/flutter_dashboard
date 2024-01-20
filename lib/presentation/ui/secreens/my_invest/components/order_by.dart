@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/drop_down_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,33 +30,23 @@ class OrderBy extends StatelessWidget {
       children: [
         Text(name,style: GoogleFonts.poppins(color: Colors.black87,fontWeight: FontWeight.bold),),
         SizedBox(height: 10,),
-        Container(
-          clipBehavior: Clip.hardEdge,
-          width:size==SecreenSize.large?largeWidth: smallWidth,
-          height: 160,
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-            borderRadius: BorderRadius.circular(5)
-          ),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(right: 5),
-                  width: size==SecreenSize.large?largeWidth: smallWidth,
-                  height: 30,
-                  decoration:const  BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5))
-                  ),
-                  alignment: Alignment.centerRight,
-                  child: Transform.rotate(angle:pi/2,child: Icon(Icons.arrow_forward_ios_outlined,color: AppColors.primaryColor,size: 15,)),
-                ),
-                ...List.generate(items.length, (index) => item(items.elementAt(index),index!=(items.length-1)))
-
-              ],
+        Center(
+          child: Container(
+            padding: EdgeInsets.only(right: 5),
+            width: size==SecreenSize.large?largeWidth: smallWidth,
+            height: 40,
+            decoration:const  BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5))
             ),
+            alignment: Alignment.centerRight,
+            child: DropDownList(
+              items: items,
+              hint: '',
+              color: AppColors.primaryColor,
+              borderColor: Colors.white,
+              dividerColor: AppColors.secondaryColor,
+            )
           ),
         ),
       ],

@@ -1,8 +1,13 @@
 
 
+import 'package:ayoub_baali/presentation/ui/secreens/achievements/achievements.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/logout/logout_secreen.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/membership/membership.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/secreens.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/about_us/about_us_page.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/forget_password/forget_pass_page.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/landing_page.dart';
+import 'package:ayoub_baali/presentation/ui/web_secreens/privacy_policy/privacy_policy.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/signup/signup_page.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template.dart';
 import 'package:go_router/go_router.dart';
@@ -25,11 +30,17 @@ class Routes{
   static const String withdraw='/withdraw';
   static const String logout='/logout';
 
+  static const String membership='/membership';
+  static const String achievements='/achievements';
+
 
 
   //web
   static const String landing='/';
   static const String signup='/signup';
+  static const String aboutUs='/aboutUs';
+  static const String forgetPass='/forgetPass';
+  static const String privacyPolicy='/privacyPolicy';
 
   static GoRouter router=GoRouter(
 
@@ -52,6 +63,21 @@ class Routes{
               GoRoute(
                   path: signup,
                   pageBuilder: (context,state)=>NoTransitionPage(child: SignUpPage())
+              ),
+              GoRoute(
+                  path: aboutUs,
+                pageBuilder: (context,state)=>NoTransitionPage(child: AboutUsPage())
+                      
+              ),
+              GoRoute(
+                  path: forgetPass,
+                  pageBuilder: (context,state)=>NoTransitionPage(child: ForgetPassPage())
+
+              ),
+              GoRoute(
+                  path: privacyPolicy,
+                  pageBuilder: (context,state)=>NoTransitionPage(child: PrivacyPolicy())
+
               ),
             ]
         ),
@@ -135,6 +161,17 @@ class Routes{
                   path: changePass,
                   pageBuilder: (context,state){
                     return NoTransitionPage(child: ChangePassSecreen());
+                  }
+              ),
+              GoRoute(
+                  path: membership,
+                  pageBuilder: (context,state){
+                    return NoTransitionPage(child: Membership());
+                  }
+              ),GoRoute(
+                  path: achievements,
+                  pageBuilder: (context,state){
+                    return NoTransitionPage(child: Achievements());
                   }
               ),
               GoRoute(

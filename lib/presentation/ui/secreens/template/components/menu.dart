@@ -33,11 +33,9 @@ class Menu extends StatelessWidget {
       children: [
         menuHeader(),
         Expanded(
-            child:Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  children:List.generate(items.length, (index) => menuItemWidget(items.elementAt(index))),
-                ),
+            child:SingleChildScrollView(
+              child: Column(
+                children:List.generate(items.length, (index) => menuItemWidget(items.elementAt(index))),
               ),
             )
         ),

@@ -2,19 +2,23 @@ import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
-import 'package:ayoub_baali/presentation/ui/secreens/profile/components/account_info.dart';
-import 'package:ayoub_baali/presentation/ui/secreens/profile/components/profile_header.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/membership/components/header.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/membership/components/memberships.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/membership/components/table.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
 
 
 
 
-class ProfileSecreen extends StatelessWidget {
+
+
+class Membership extends StatelessWidget {
   late SecreenSize size;
   late double width;
 
-  ProfileSecreen({Key? key}) : super(key: key);
+
+  Membership() ;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class ProfileSecreen extends StatelessWidget {
 
     return Scaffold(
       appBar:  MyHeader(
-          name:'Account info',
+          name:'Membership',
           size: size,
           leadingWidth: size!=SecreenSize.large?80:null,
           leading: Row(
@@ -44,9 +48,15 @@ class ProfileSecreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const  SizedBox(height: 40,),
-          ProfileHeader(size: size),
-          AccountInfo()
+
+          const SizedBox(height: 40,),
+          MembershipHeader(size: size),
+          const SizedBox(height: 30,),
+          MemberShipsDetails(size: size,),
+          SizedBox(height: 40,),
+          MemberShipTable(size: size,)
+
+
 
         ],
       ),
