@@ -23,7 +23,7 @@ class FirstSection extends StatelessWidget {
   Widget build(BuildContext context) {
     if(size!=SecreenSize.small){
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal:size==SecreenSize.large?100:0,vertical: 40),
+        padding: EdgeInsets.symmetric(horizontal:size==SecreenSize.large?100:8,vertical: 40),
         child: Row(
           children: [
             Expanded(

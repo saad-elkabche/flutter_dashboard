@@ -19,9 +19,8 @@ class OrderBy extends StatelessWidget {
 
   bool isExpanded=false;
 
-  final double largeWidth=170;
-
-  final double smallWidth=130;
+  final double largeWidth=200;
+  final double smallWidth=155;
 
   @override
   Widget build(BuildContext context) {
@@ -29,25 +28,24 @@ class OrderBy extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(name,style: GoogleFonts.poppins(color: Colors.black87,fontWeight: FontWeight.bold),),
-        SizedBox(height: 10,),
-        Center(
-          child: Container(
-            padding: EdgeInsets.only(right: 5),
-            width: size==SecreenSize.large?largeWidth: smallWidth,
-            height: 40,
-            decoration:const  BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5))
-            ),
-            alignment: Alignment.centerRight,
-            child: DropDownList(
-              items: items,
-              hint: '',
-              color: AppColors.primaryColor,
-              borderColor: Colors.white,
-              dividerColor: AppColors.secondaryColor,
-            )
+        const SizedBox(height: 10,),
+        Container(
+          padding: const EdgeInsets.only(right: 5),
+          width: size==SecreenSize.large?largeWidth: smallWidth,
+          height: 40,
+          decoration:const  BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5))
           ),
+          child: DropDownList(
+            items: items,
+            hint: '',
+            color: AppColors.primaryColor,
+            borderColor:size==SecreenSize.small
+                ?AppColors.primaryColor
+                :Colors.white,
+            dividerColor: AppColors.secondaryColor,
+          )
         ),
       ],
     );

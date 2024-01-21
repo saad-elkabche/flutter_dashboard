@@ -48,7 +48,7 @@ class KYCForm extends StatelessWidget {
         Text('ID Type:',style: GoogleFonts.poppins(color:size==SecreenSize.small?AppColors.primaryColor: Colors.black,fontWeight: FontWeight.bold),),
 
         const SizedBox(height: 10,),
-        DropDownList(items: ['item 1','item 2'], hint: 'Choose one'),
+        DropDownList(items: ['item 1','item 2'],borderColor: AppColors.secondaryColor, hint: 'Choose one'),
       ],
     );
   }

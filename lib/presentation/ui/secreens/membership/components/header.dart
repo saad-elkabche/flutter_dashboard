@@ -31,8 +31,8 @@ class MembershipHeader extends StatelessWidget {
   List<Widget> getChildren(){
     if(size==SecreenSize.small){
       return [
-        Text('Current Membership:Basic',style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.bold),),
-        Text(r'Price:$5',style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.bold),),
+        Text('Current Membership:Basic',style: GoogleFonts.poppins(fontSize: 12,color: Colors.white,fontWeight: FontWeight.bold),),
+        Text(r'Price:$5',style: GoogleFonts.poppins(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),),
 
       ];
     }else if(size==SecreenSize.medium){

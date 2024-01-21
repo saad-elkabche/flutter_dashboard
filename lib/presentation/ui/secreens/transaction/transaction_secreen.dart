@@ -39,7 +39,6 @@ class TransactionSecreen extends StatelessWidget {
               const ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
             ],
           ),
-
           mobActions:const [
             ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
             Icon(Icons.arrow_forward_ios,color: AppColors.secondaryColor,),
@@ -52,7 +51,7 @@ class TransactionSecreen extends StatelessWidget {
           TransactionHeader(size: size),
           const SizedBox(height: 20,),
           orders(),
-          SizedBox(height: 25,),
+          SizedBox(height: 55,),
           TransactionTable(size: size),
           SizedBox(height: 25,),
         ],
@@ -79,6 +78,7 @@ class TransactionSecreen extends StatelessWidget {
               children: [
                 SizedBox(width: 15,),
                 Expanded(
+                  flex: 3,
                     child:Row(
                       children: [
                         Expanded(child: OrderBy(name: 'Order By Type',size: size,items: const ['Flexible','Non-Flexible'],)),
@@ -87,6 +87,7 @@ class TransactionSecreen extends StatelessWidget {
                     )
                 ),
                 const Expanded(
+                  flex: 2,
                     child: Center(
                       child: Align(
                           alignment: Alignment.topRight,

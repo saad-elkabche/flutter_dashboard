@@ -159,7 +159,7 @@ class PaymentGateway extends StatelessWidget {
         children: [
           Text('Payement Gateway',style: GoogleFonts.poppins(color:Colors.black,fontWeight: FontWeight.bold),),
           const SizedBox(height: 10,),
-          DropDownList(items: const ['Litecoin','Dogecoin'],hint: 'Choose Gateway',),
+          DropDownList(items: const ['Litecoin','Dogecoin'],borderColor: AppColors.secondaryColor,hint: 'Choose Gateway',),
         ],
       ),
     );

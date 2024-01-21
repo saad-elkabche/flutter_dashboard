@@ -102,6 +102,7 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
               children: [
                 SizedBox(width: 15,),
                 Expanded(
+                  flex: 3,
                     child:Row(
                       children: [
                         Expanded(child: OrderBy(name: 'Order By Type',size: size,items: const ['Flexible','Non-Flexible'],)),
@@ -110,6 +111,7 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
                     )
                 ),
                 const Expanded(
+                  flex: 2,
                     child: Center(
                       child: Align(
                           alignment: Alignment.topRight,

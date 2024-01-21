@@ -2,10 +2,13 @@ import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
+import 'package:ayoub_baali/presentation/ui/components/log_out_popup.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/profile/components/account_info.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/profile/components/profile_header.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
+import 'package:ayoub_baali/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -46,10 +49,20 @@ class ProfileSecreen extends StatelessWidget {
         children: [
           const  SizedBox(height: 40,),
           ProfileHeader(size: size),
-          AccountInfo()
+          AccountInfo(onLogout:()=> showLogoutPopup(context),)
 
         ],
       ),
     );
+  }
+
+  showLogoutPopup(BuildContext context) async{
+    var result=await showDialog(
+        context: context,
+        barrierColor: Colors.transparent,
+        builder: (contxt)=>LogOutPopUp(width: width,));
+    if(result ?? false){
+      GoRouter.of(context).go(Routes.landing);
+    }
   }
 }

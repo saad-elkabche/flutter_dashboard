@@ -54,8 +54,8 @@ class Membership extends StatelessWidget {
           const SizedBox(height: 30,),
           MemberShipsDetails(size: size,),
           SizedBox(height: 40,),
-          MemberShipTable(size: size,)
-
+          MemberShipTable(size: size,),
+          SizedBox(height: 40,),
 
 
         ],

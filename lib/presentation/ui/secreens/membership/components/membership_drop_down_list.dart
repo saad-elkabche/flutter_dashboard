@@ -12,8 +12,9 @@ class MemberShipDropDownList extends StatefulWidget {
   String hint;
   Color color,dividerColor;
   Color? borderColor;
+  double fontSize;
 
-  MemberShipDropDownList({required this.items,this.borderColor,this.color=AppColors.secondaryColor,this.dividerColor=Colors.white,required this.hint}) ;
+  MemberShipDropDownList({required this.items,required this.fontSize,this.borderColor,this.color=AppColors.secondaryColor,this.dividerColor=Colors.white,required this.hint}) ;
 
 
   @override
@@ -67,8 +68,8 @@ class _MemberShipDropDownListState extends State<MemberShipDropDownList> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('$name',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: 10,fontWeight: FontWeight.normal),),
-              Text('$value',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: 10,fontWeight: FontWeight.normal),),
+              Text('$name',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: widget.fontSize,fontWeight: FontWeight.normal),),
+              Text('$value',style: GoogleFonts.poppins(color: isSelected?Colors.black:Colors.white,fontSize: widget.fontSize,fontWeight: FontWeight.normal),),
 
             ],
           ),

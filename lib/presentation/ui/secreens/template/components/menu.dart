@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
   List<MenuItem> items;
   SecreenSize size;
   String currentLocation;
@@ -14,15 +14,17 @@ class Menu extends StatelessWidget {
   Menu({required this.items,required this.currentLocation,required this.size,required this.onItemClick});
 
   @override
+  State<Menu> createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
+  bool isExpanded=true;
+
+  @override
   Widget build(BuildContext context) {
 
-    return size==SecreenSize.large
-        ?Container(
-      width: 250,
-      height: double.infinity,
-      color: AppColors.primaryColor,
-      child: Center(child: menuContent())
-    )
+    return widget.size==SecreenSize.large
+        ?largeMenu()
         :Drawer(
               backgroundColor: AppColors.primaryColor,
               child: menuContent(),);
@@ -35,39 +37,54 @@ class Menu extends StatelessWidget {
         Expanded(
             child:SingleChildScrollView(
               child: Column(
-                children:List.generate(items.length, (index) => menuItemWidget(items.elementAt(index))),
+                children:List.generate(widget.items.length, (index) => menuItemWidget(widget.items.elementAt(index))),
               ),
             )
         ),
+        if(isExpanded)
         footer()
       ],
     );
   }
-  
+
   Widget menuItemWidget(MenuItem menuItem){
     return ListTile(
-      onTap:()=> onItemClick?.call(menuItem),
+      onTap:()=> widget.onItemClick?.call(menuItem),
       leading: ImageIcon(
           AssetImage(menuItem.icon),
-        color: currentLocation==menuItem.location?Colors.white:AppColors.secondaryColor,
+        color: widget.currentLocation==menuItem.location?Colors.white:AppColors.secondaryColor,
         size: 17,
       ),
-      title: Text(menuItem.name,style: GoogleFonts.poppins(fontSize: 13,color: Colors.white),),
+      title:isExpanded? Text(menuItem.name,style: GoogleFonts.poppins(fontSize: 13,color: Colors.white),):null,
     );
   }
 
   Widget menuHeader(){
-    return Container(
+    return isExpanded
+        ?Container(
       height: 70,
       color:Colors.white,
       child:  Center(
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Image.asset(AppImages.img_logo,fit: BoxFit.cover,),
+        child: Stack(
+          alignment: Alignment.center,
+          children:[
+            SizedBox(height: double.infinity,width: double.infinity,),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Image.asset(AppImages.img_logo,fit: BoxFit.cover,),
+            ),
+            if(widget.size==SecreenSize.large)
+            Positioned(
+                right: 0,
+                top: 0,
+                child: IconButton(onPressed: ()=>onIconMenuTapped(), icon: const Icon(Icons.menu,color: AppColors.secondaryColor,)))
+          ]
         ),
       ),
-    );
+    )
+        :IconButton(onPressed: ()=>onIconMenuTapped(), icon: const Icon(Icons.arrow_forward_rounded,size: 40,color: AppColors.secondaryColor,));
   }
+
   Widget footer(){
     return  Container(
       height: 45,
@@ -94,6 +111,21 @@ class Menu extends StatelessWidget {
     );
   }
 
+  void onIconMenuTapped() {
+    setState(() {
+      isExpanded=!isExpanded;
+    });
+  }
+
+  Widget largeMenu() {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds:350),
+        width:isExpanded?250:70,
+        height: double.infinity,
+        color: AppColors.primaryColor,
+        child: Center(child: menuContent())
+    );
+  }
 }
 
 class MenuItem{

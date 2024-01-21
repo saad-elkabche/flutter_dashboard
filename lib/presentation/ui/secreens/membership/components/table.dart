@@ -106,7 +106,7 @@ class MemberShipTable extends StatelessWidget {
         color: bgColor,
         boxShadow: const [BoxShadow(color: Colors.grey,offset: Offset(3,3),blurRadius: 14)]
       ),
-      child: Text("$text",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: textColor),),
+      child: Text("$text",style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: size==SecreenSize.small?10:14,color: textColor),),
     );
   }
 
@@ -120,7 +120,7 @@ class MemberShipTable extends StatelessWidget {
                   child:
                   items.elementAt(index) is String
                       ?
-                  Text( items.elementAt(index),overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontWeight: FontWeight.bold),)
+                  Text( items.elementAt(index),overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(fontSize: size==SecreenSize.small?10:13,fontWeight: FontWeight.bold),)
                       :
                   items.elementAt(index),
                 )

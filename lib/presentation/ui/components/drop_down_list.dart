@@ -49,7 +49,6 @@ class _DropDownListState extends State<DropDownList> {
           dropdownColor:widget.color,
           underline: Container(),
           value:currentIndex ,
-
           items: List.generate(widget.items.length, (index) =>
               chooseItem(widget.items.elementAt(index), index==currentIndex,index,index!=widget.items.length-1)),
         )

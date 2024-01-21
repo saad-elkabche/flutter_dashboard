@@ -18,8 +18,8 @@ class MemberShipsDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 28),
-      padding: EdgeInsets.symmetric(horizontal: 18,vertical: 30),
+      margin: EdgeInsets.symmetric(horizontal:size==SecreenSize.small?8: 28),
+      padding: EdgeInsets.symmetric(horizontal:size==SecreenSize.small?8: 18,vertical: 30),
       decoration:  BoxDecoration(
         color: AppColors.scaffoldColor,
         boxShadow: [BoxShadow(color: Colors.grey,offset: Offset(4,4),blurRadius: 10)],
@@ -31,29 +31,35 @@ class MemberShipsDetails extends StatelessWidget {
           Expanded(child: column1()),
           Expanded(child: column2())
         ],
-      ),
+      )
     );
   }
 
+
   Widget column1() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
-        //mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment:size==SecreenSize.large?MainAxisAlignment.start:MainAxisAlignment.spaceBetween ,
         children: [
           if(size==SecreenSize.large)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(r'Memberships',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
-                Text('Current Membership: Basic',style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal),)
-              ],
+            Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(r'Memberships',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text('Current Membership: Basic',style: GoogleFonts.poppins(color: Colors.black,fontSize: 11,fontWeight: FontWeight.normal),)
+                ],
+              ),
             ),
 
-          const SizedBox(height: 20,),
+
 
           MemberShipDropDownList(
             hint: '',
+            fontSize: size==SecreenSize.large?17:size==SecreenSize.medium?13:10,
             borderColor: Colors.white,
             dividerColor: AppColors.secondaryColor,
             color: AppColors.primaryColor,
@@ -67,7 +73,13 @@ class MemberShipsDetails extends StatelessWidget {
           ),
           SizedBox(height: 200,),
 
-          MyCustomButton(name: 'Purchase Membership',color: AppColors.secondaryColor,)
+          /*MyCustomButton(name: 'Purchase Membership',
+            alignment: Alignment.centerLeft,
+            width: 220,
+
+            fontSize: size==SecreenSize.small?10:17,
+            color: AppColors.secondaryColor,)*/
+          MySimpleBotton(name: 'Purchase Membership', width: 220, height: 30,fontSize:size==SecreenSize.small?10:15,onclick: (){},)
 
         ],
       ),
@@ -77,30 +89,40 @@ class MemberShipsDetails extends StatelessWidget {
   Widget column2() {
     return Column(
       mainAxisSize:MainAxisSize.min ,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: size!=SecreenSize.large?MainAxisAlignment.spaceBetween:MainAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+        Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Column(
-              mainAxisSize:MainAxisSize.min ,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment:  MainAxisAlignment.spaceBetween,
               children: [
-                Text(r'Silver Membership',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
-                const SizedBox(height: 5,),
-                Container(
-                  width: 80,
-                  height: 1.5,
-                  color: AppColors.secondaryColor,
-                )
+                Column(
+                  mainAxisSize:MainAxisSize.min ,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(r'Silver Membership',style: GoogleFonts.poppins(fontSize: size!=SecreenSize.small?20:14,color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 5,),
+                    Container(
+                      width: 130,
+                      height: 1.5,
+                      color: AppColors.secondaryColor,
+                    )
+                  ],
+                ),
+                if(size==SecreenSize.large)
+                  Text('Price:12.5000',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),)
               ],
             ),
-            if(size==SecreenSize.large)
-              Text('Price:12.5000',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),)
+            SizedBox(height: 20,),
+
+            responsiverWidgets(),
           ],
         ),
-        SizedBox(height: 20,),
+        if(size!=SecreenSize.large)
+          MySimpleBotton(name: 'view details', width: 120, color: AppColors.primaryColor,height: 30,fontSize:12,onclick: (){},)
 
-        responsiverWidgets()
 
 
       ],
@@ -159,7 +181,12 @@ class MemberShipsDetails extends StatelessWidget {
   Widget item(String name){
     return ListTile(
       leading: ImageIcon(AssetImage(AppImages.ic_check),color: AppColors.secondaryColor,),
-      title: Text('$name',style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.w300),),
+      title: Text('$name',
+        style: GoogleFonts.poppins(color: Colors.black,
+            fontWeight: FontWeight.w300,
+          fontSize: size==SecreenSize.small?10:13
+        ),
+      ),
     );
   }
 

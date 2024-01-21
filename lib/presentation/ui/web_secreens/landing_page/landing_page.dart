@@ -13,6 +13,7 @@ import 'package:ayoub_baali/presentation/ui/web_secreens/landing_page/components
 import 'package:ayoub_baali/presentation/ui/web_secreens/web_template/web_template_state.dart';
 import 'package:ayoub_baali/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -32,7 +33,7 @@ class LandingPage extends StatelessWidget {
       body:ListView(
         children: [
           WebTemplateState.headerOf(context),
-          FirstSection(size: size,getStarted: (){},learnMore: (){},),
+          FirstSection(size: size,getStarted: (){GoRouter.of(context).go(Routes.signup);},learnMore: (){},),
           const SizedBox(height: 26,),
           SecondSection(size: size),
           const SizedBox(height: 26,),

@@ -1,6 +1,7 @@
 import 'package:ayoub_baali/core/constants/app_color.dart';
 import 'package:ayoub_baali/core/constants/app_images_icons.dart';
 import 'package:ayoub_baali/core/constants/enums.dart';
+import 'package:ayoub_baali/presentation/ui/components/log_out_popup.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/components/header.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/components/menu.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
@@ -25,6 +26,7 @@ class Template extends StatefulWidget {
 class _TemplateState extends State<Template> {
   late SecreenSize size;
   late double width;
+  late double height;
   GlobalKey<ScaffoldState> scaffoldState=GlobalKey<ScaffoldState>();
    int selectBottomMenuItem=0;
   String nameRoute='Dashboard';
@@ -34,8 +36,8 @@ class _TemplateState extends State<Template> {
   Widget build(BuildContext context) {
     currentLocation=GoRouterState.of(context).uri.toString();
 
-    double width=MediaQuery.sizeOf(context).width;
-    double height=MediaQuery.sizeOf(context).height;
+     width=MediaQuery.sizeOf(context).width;
+     height=MediaQuery.sizeOf(context).height;
 
     if(width<=600){
       size=SecreenSize.small;
@@ -122,7 +124,7 @@ class _TemplateState extends State<Template> {
           MenuItem('KYC verification', Routes.kycVerification, AppImages.ic_kyc),
           MenuItem('2FA Security', Routes.faSecurity, AppImages.ic_2fa),
 
-          //MenuItem('Membership', Routes.membership, AppImages.ic_2fa),
+         // MenuItem('Membership', Routes.membership, AppImages.ic_2fa),
           //MenuItem('Achievment', Routes.achievements, AppImages.ic_2fa),
 
           MenuItem('Change Password', Routes.changePass, AppImages.ic_change_pass),
@@ -137,14 +139,24 @@ class _TemplateState extends State<Template> {
 
   void _onmenuItemSelected(MenuItem menuItem) {
     scaffoldState.currentState!.closeDrawer();
-    nameRoute=menuItem.name;
-    currentLocation=menuItem.location;
-    GoRouter.of(context).go(menuItem.location);
+    if(menuItem.location==Routes.logout){
+      onLogout();
+    }else{
+      nameRoute=menuItem.name;
+      currentLocation=menuItem.location;
+      GoRouter.of(context).go(menuItem.location);
+    }
   }
 
-  void _onMenuClicked() {
-    scaffoldState.currentState!.openDrawer();
+  void onLogout()async{
+    var result=await showDialog(context: context,
+        barrierColor: Colors.transparent,
+        builder: (context)=>LogOutPopUp(width: width,));
+    if(result ?? false){
+      GoRouter.of(context).go(Routes.landing);
+    }
   }
+
 }
 
 

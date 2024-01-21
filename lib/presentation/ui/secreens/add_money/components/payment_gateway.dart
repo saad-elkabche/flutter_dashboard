@@ -48,7 +48,7 @@ class PaymentGateway extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: DropDownList(items: ['Litecoin','Dogecoin'], hint: 'Choose Gateway'),
+            child: DropDownList(items: ['Litecoin','Dogecoin'],borderColor: AppColors.secondaryColor, hint: 'Choose Gateway'),
           ),
           const SizedBox(height: 30,),
           changeText('Limit 1.00 - 100000 USD'),

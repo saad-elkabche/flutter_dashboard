@@ -10,7 +10,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class AccountInfo extends StatelessWidget {
-  const AccountInfo({Key? key}) : super(key: key);
+
+  VoidCallback? onLogout;
+   AccountInfo({this.onLogout});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class AccountInfo extends StatelessWidget {
             item(AppImages.ic_person, 'Registration Info', 'abcxyz1234@gmail.com', Icons.remove_red_eye_rounded),
             item(AppImages.ic_account_twitter, 'Twitter', 'Unliked',Icons.arrow_forward_ios_outlined ),
             SizedBox(height: 30,),
-            MyCustomButton(name: 'Log Out',color: Colors.grey,)
+            MyCustomButton(name: 'Log Out',color: Colors.grey,onClick: onLogout,)
           ],
         ),
       ),
@@ -38,7 +40,7 @@ class AccountInfo extends StatelessWidget {
     return ListTile(
       leading: icon is String
       ?
-        ImageIcon(AssetImage(icon),color: AppColors.secondaryColor,)
+        Image.asset(icon,width: 25,fit: BoxFit.cover,)
         :
       Icon(icon,color: AppColors.secondaryColor),
       title: Text(title,style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
@@ -50,5 +52,6 @@ class AccountInfo extends StatelessWidget {
       Icon(iconTriling,color: AppColors.secondaryColor),
     );
   }
+
 
 }

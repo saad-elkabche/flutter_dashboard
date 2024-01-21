@@ -73,6 +73,16 @@ class AppImages{
 
 
 
+  static const String imgAchievements1="assets/images/img_achievements_1.png";
+  static const String imgAchievements2="assets/images/img_achievements_2.png";
+  static const String imgAchievements3="assets/images/img_achievements_3.png";
+  static const String imgAchievements4="assets/images/img_achievements_4.png";
+  static const String imgAchievements5="assets/images/img_achievements_5.png";
+  static const String imgAchievements6="assets/images/img_achievements_6.png";
+
+
+
+
 
 
 
