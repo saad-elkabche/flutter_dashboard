@@ -5,6 +5,7 @@ import 'package:ayoub_baali/presentation/ui/components/app_header.dart';
 import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -43,7 +44,7 @@ class ProfitLogSecreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 40,),
+           SizedBox(height: 40.h,),
           Center(
             child: Align(
               alignment: size==SecreenSize.large?Alignment.centerLeft:Alignment.center,
@@ -64,7 +65,7 @@ class ProfitLogSecreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: TableHeader(items: ['Plan','Duration','investment','Profit']),
           ),
-          const SizedBox(height: 20,),
+           SizedBox(height: 20.h,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: MainContainer(

@@ -9,6 +9,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/my_invest/components/order_
 import 'package:ayoub_baali/presentation/ui/secreens/my_invest/components/table.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -26,12 +27,13 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
   int currentIndex=0;
   late SecreenSize size;
   late double width;
+  late double height;
 
   @override
   Widget build(BuildContext context) {
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
-
+    height=TemplateState.heightOf(context);
     return Scaffold(
       appBar: MyHeader(
         name: size==SecreenSize.small?"My Investments":"Investment",
@@ -59,11 +61,11 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
           child:ListView(
             children: [
 
-              SizedBox(height: 40,),
+              SizedBox(height: 40.h,),
               MyInvestHeader(currentIndex: currentIndex,onClick: onHeaderTap,size: size),
               Filters(size: size),
               orders(),
-              SizedBox(height: 25,),
+              SizedBox(height: 25.h,),
               MyInvestTable(
                 size: size,
                 items: [
@@ -74,7 +76,7 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
                   Invest(amount: r'10000.00$',dateTime: '2023-10-22 11.30 AM',expireAt: '2023-10-23'),
                 ],
               ),
-              const SizedBox(height: 20,)
+              SizedBox(height: 20.h,)
 
             ],
           )
@@ -95,6 +97,7 @@ class _MyInvestSecreenState extends State<MyInvestSecreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: MainContainer(
+        height: height*0.3,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 17.0),
             child: Row(

@@ -9,6 +9,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/plan/components/plan_header
 import 'package:ayoub_baali/presentation/ui/secreens/plan/components/plans.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -89,18 +90,18 @@ class _PlanSecreenState extends State<PlanSecreen> {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 30,),
+           SizedBox(height: 30.h,),
           if(size==SecreenSize.large)
             const PlandHeader(),
-          const SizedBox(height: 15,),
+          SizedBox(height: 15.h,),
 
           if(size!=SecreenSize.large)
             Center(child: Text('CHOOSE A PLAN TO START',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold,fontSize: 20),)),
 
-          const SizedBox(height: 15,),
+          SizedBox(height: 15.h,),
 
           plans(),
-          const SizedBox(height: 15,),
+           SizedBox(height: 15.h,),
           if(size!=SecreenSize.large)
             Padding(
               padding: const EdgeInsets.all(18.0),

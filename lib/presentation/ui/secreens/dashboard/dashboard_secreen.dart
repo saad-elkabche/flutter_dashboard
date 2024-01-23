@@ -16,6 +16,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dar
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class DashboardSecreen extends StatelessWidget {
@@ -23,6 +24,7 @@ class DashboardSecreen extends StatelessWidget {
 
   late SecreenSize size;
   late double width;
+  late double height;
 
   DashboardSecreen({Key? key}) : super(key: key);
 
@@ -31,6 +33,7 @@ class DashboardSecreen extends StatelessWidget {
 
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
+    height=TemplateState.heightOf(context);
 
     return Scaffold(
       appBar: MyHeader(size: size,
@@ -46,22 +49,22 @@ class DashboardSecreen extends StatelessWidget {
       body:  ListView(
         children: [
 
-          SizedBox(height: 13,),
+          SizedBox(height: 13.h,),
           _getProfInfo(),
 
-          const SizedBox(height: 40,),
+           SizedBox(height: 40.h,),
 
           if(size==SecreenSize.large)
             _getAction(),
 
 
-          const SizedBox(height: 15,),
+           SizedBox(height: 15.h,),
 
           _getProfits(),
-          const SizedBox(height: 15,),
+           SizedBox(height: 15.h,),
           _getCharts(),
 
-          const SizedBox(height: 40,)
+          SizedBox(height: 40.h,)
 
 
 
@@ -88,7 +91,7 @@ class DashboardSecreen extends StatelessWidget {
               flex: 3,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: MainContainer(height: 120, child: ProfileInfo()),
+                child: MainContainer(height: height*0.1,minHeight: 120, child: ProfileInfo()),
               )
           ),
           Expanded(
@@ -96,7 +99,7 @@ class DashboardSecreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MainContainer(
-                    height: 120, child: ReferrelLink(size: size,)),
+                    height: height*0.1,minHeight: 120,child: ReferrelLink(size: size,)),
               )
           ),
 
@@ -122,14 +125,14 @@ class DashboardSecreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child:Profite(icon:AppImages.ic_rd_money , profit:'0.0000' , name: 'Cash Balance', action: 'Add Money',color: Colors.white,textColor: Colors.black,)),
-              Expanded(child:Profite(icon:AppImages.ic_rd_invest , profit:'0.0000' , name: 'Investment Amount', action: 'My Investment',color: AppColors.primaryColor),),
+              Expanded(child:Profite(size: size,icon:AppImages.ic_rd_money,  profit:'0.0000' , name: 'Cash Balance', action: 'Add Money',color: Colors.white,textColor: Colors.black,)),
+              Expanded(child:Profite(size: size,icon:AppImages.ic_rd_invest , profit:'0.0000' , name: 'Investment Amount', action: 'My Investment',color: AppColors.primaryColor),),
             ],
           ),
           Row(
             children: [
-              Expanded(child: Profite(icon:AppImages.ic_rd_profit , profit:'0.0000' , name: 'Investment Profit', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
-              Expanded(child: Profite(icon:AppImages.ic_rd_affialiate , profit:'0.0000' , name: 'Affiliate Income', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
+              Expanded(child: Profite(size: size,icon:AppImages.ic_rd_profit, profit:'0.0000' , name: 'Investment Profit', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
+              Expanded(child: Profite(size: size,icon:AppImages.ic_rd_affialiate , profit:'0.0000' , name: 'Affiliate Income', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
             ],
           )
         ],
@@ -140,10 +143,10 @@ class DashboardSecreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(child: Profite(icon:AppImages.ic_rd_money , profit:'0.0000' , name: 'Cash Balance', action: 'Add Money',color: Colors.white,textColor: Colors.black,)),
-          Expanded(child: Profite(icon:AppImages.ic_rd_invest , profit:'0.0000' , name: 'Investment Amount', action: 'My Investment',color: AppColors.primaryColor)),
-          Expanded(child: Profite(icon:AppImages.ic_rd_profit , profit:'0.0000' , name: 'Investment Profit', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
-          Expanded(child: Profite(icon:AppImages.ic_rd_affialiate , profit:'0.0000' , name: 'Affiliate Income', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
+          Expanded(child: Profite( size: size,icon:AppImages.ic_rd_money,height:height*0.18 , profit:'0.0000' , name: 'Cash Balance', action: 'Add Money',color: Colors.white,textColor: Colors.black,)),
+          Expanded(child: Profite( size: size,icon:AppImages.ic_rd_invest,height:height*0.18 , profit:'0.0000' , name: 'Investment Amount', action: 'My Investment',color: AppColors.primaryColor)),
+          Expanded(child: Profite( size: size,icon:AppImages.ic_rd_profit,height:height*0.18 , profit:'0.0000' , name: 'Investment Profit', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
+          Expanded(child: Profite( size: size,icon:AppImages.ic_rd_affialiate,height:height*0.18 , profit:'0.0000' , name: 'Affiliate Income', action: 'Transfer To Cash Balance',color: AppColors.primaryColor,)),
         ],
       ),
     );
@@ -155,8 +158,8 @@ class DashboardSecreen extends StatelessWidget {
     if(size==SecreenSize.large){
       return Row(
         children: [
-          Expanded(flex:2,child: StatisticsChart(height: 350,size: size,)),
-          Expanded(flex: 3,child: EarningChart(height: 350,size: size,))
+          Expanded(flex:2,child: StatisticsChart(height: height*0.3,size: size,)),
+          Expanded(flex: 3,child: EarningChart(height: height*0.3,size: size,))
         ],
       );
     }
@@ -178,11 +181,11 @@ class DashboardSecreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(child: ActionWeb(name: 'My Invest', icon: AppImages.ic_my_invest)),
-            Expanded(child: ActionWeb(name: 'Add Money', icon: AppImages.ic_money)),
-            Expanded(child: ActionWeb(name: 'Withdraw', icon: AppImages.ic_withdraw_action)),
-            Expanded(child: ActionWeb(name: 'Network', icon: AppImages.ic_network)),
-            Expanded(child: ActionWeb(name: 'Profit log', icon: AppImages.ic_profit_log)),
+            Expanded(child: ActionWeb(name: 'My Invest', icon: AppImages.ic_my_invest,height: height,)),
+            Expanded(child: ActionWeb(name: 'Add Money', icon: AppImages.ic_money,height: height,)),
+            Expanded(child: ActionWeb(name: 'Withdraw', icon: AppImages.ic_withdraw_action,height: height,)),
+            Expanded(child: ActionWeb(name: 'Network', icon: AppImages.ic_network,height: height,)),
+            Expanded(child: ActionWeb(name: 'Profit log', icon: AppImages.ic_profit_log,height: height,)),
           ],
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/money_transfer/components/p
 import 'package:ayoub_baali/presentation/ui/secreens/money_transfer/components/transfert_money.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -46,12 +47,12 @@ class MoneyTransfertSecreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 20,),
+          SizedBox(height: 20.h,),
 
           if(size!=SecreenSize.large)
             Center(child: Text('Transfert Your Money',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontSize: 18,fontWeight: FontWeight.bold),)),
 
-          SizedBox(height: 20,),
+          SizedBox(height: 20.h,),
 
           Padding(
             padding: const EdgeInsets.all(12.0),

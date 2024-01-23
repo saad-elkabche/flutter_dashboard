@@ -17,15 +17,21 @@ class Profite extends StatelessWidget {
   String profit;
   Color textColor;
   String icon;
+  double? height;
+  SecreenSize size;
 
 
-  Profite({this.color=AppColors.primaryColor, required this.icon,required this.profit,required this.name, required this.action, this.textColor=Colors.white});
+  Profite({this.color=AppColors.primaryColor,required this.size, this.height, required this.icon,required this.profit,required this.name, required this.action, this.textColor=Colors.white});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
+      height: height ?? 140,
       width: 250,
+      constraints: const BoxConstraints(
+        minHeight: 140,
+        maxHeight: 270
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       padding: const EdgeInsets.only(left: 7),
       decoration: BoxDecoration(
@@ -39,9 +45,11 @@ class Profite extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(name,style:  GoogleFonts.poppins(fontSize: 15,color: textColor),textAlign: TextAlign.center,),
-              Text("\$${profit}",style: GoogleFonts.poppins(fontSize: 13,color: textColor),),
-              MyCustomButton(name: name,margin: 0,color: AppColors.secondaryColor,height: 35,fontSize: 8,)
+              Text(name,style:  GoogleFonts.poppins(
+                  fontSize:size==SecreenSize.large?17:13,
+                  color: textColor),textAlign: TextAlign.center,),
+              Text("\$${profit}",style: GoogleFonts.poppins(fontSize: size==SecreenSize.large?14:11,color: textColor),),
+              MyCustomButton(name: name,margin: 0,color: AppColors.secondaryColor,height: 35,fontSize:12,)
             ],
           ),
         ),

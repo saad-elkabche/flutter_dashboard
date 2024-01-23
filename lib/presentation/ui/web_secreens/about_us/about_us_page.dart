@@ -27,6 +27,7 @@ class AboutUsPage extends StatelessWidget {
     width=WebTemplateState.widthOf(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           WebTemplateState.headerOf(context),

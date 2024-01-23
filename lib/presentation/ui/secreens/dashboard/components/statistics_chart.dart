@@ -21,9 +21,9 @@ class StatisticsChart extends StatelessWidget {
     return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+         Padding(
           padding: const EdgeInsets.only(left: 18.0),
-          child: Text("Statistics",style: TextStyle(fontWeight: FontWeight.bold),),
+          child: Text("Statistics",style: TextStyle(fontWeight: FontWeight.bold,fontSize: size==SecreenSize.large?25:15),),
         ),
         const SizedBox(height: 10,),
         size==SecreenSize.large
@@ -31,6 +31,7 @@ class StatisticsChart extends StatelessWidget {
 
         ?MainContainer(
           height: height,
+            minHeight: 320,
             child:Row(
               children: [
                 Expanded(

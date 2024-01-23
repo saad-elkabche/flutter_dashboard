@@ -4,6 +4,7 @@ import 'package:ayoub_baali/core/constants/enums.dart';
 import 'package:ayoub_baali/presentation/ui/components/two_color_text.dart';
 import 'package:ayoub_baali/presentation/ui/components/web_back_decoration.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -11,27 +12,28 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SafetySecurity extends StatelessWidget {
   SecreenSize size;
-   SafetySecurity({required this.size});
+  double width;
+   SafetySecurity({required this.width,required this.size});
 
   @override
   Widget build(BuildContext context) {
     return WebBackDecoration(
-        decorationHeight:size==SecreenSize.large?650:size==SecreenSize.medium?1000:1100,
-        containerHeight: size==SecreenSize.large?650:size==SecreenSize.medium?1000:1100,
-        isPortrait: size==SecreenSize.small,
+        decorationHeight:size==SecreenSize.large?850:size==SecreenSize.medium?1000:1100,
+        containerHeight: size==SecreenSize.large?850:size==SecreenSize.medium?1000:1100,
+        isPortrait: size==SecreenSize.small || size==SecreenSize.medium,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TwoColorText(
               textAlign: TextAlign.center,
-                fontSize: 20,
+                fontSize: width>1500?45:20,
                 textOne: 'Safety,Security ',
                 textTwo: 'Satisfaction\nWith Every Investment',
                 colorOne: AppColors.secondaryColor,
                 colortwo: Colors.white
             ),
 
-            SizedBox(height: 15,),
+            const SizedBox(height: 20,),
 
 
             if(size==SecreenSize.large)
@@ -172,8 +174,15 @@ class SafetySecurity extends StatelessWidget {
 
   Widget item(String img,String name,String description,Color backGColor){
     return Container(
-      width: 260,
-      height: 260,
+      width: size ==SecreenSize.large?width*0.28:260,
+      height:size==SecreenSize.large?width*0.19:260,
+      padding: EdgeInsets.symmetric(horizontal:size==SecreenSize.large?15:8),
+      constraints: const BoxConstraints(
+        minWidth: 280,
+        minHeight: 280,
+        maxHeight: 380,
+
+      ),
       decoration: BoxDecoration(
         color: backGColor,
         borderRadius: BorderRadius.circular(16),
@@ -181,19 +190,42 @@ class SafetySecurity extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const SizedBox(height: 20,),
-          Image.asset(img,fit: BoxFit.cover,width: 70,),
-          const SizedBox(height: 15,),
-          Text('$name',style: GoogleFonts.poppins(color: AppColors.primaryColor,fontWeight: FontWeight.bold),),
-          const SizedBox(height: 10,),
-          Text(description,textAlign: TextAlign.center,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.normal),)
+
+          Expanded(
+              flex: 3,
+              child: Center(child: Image.asset(img,fit: BoxFit.cover,width:size==SecreenSize.large?95: 70,))),
+
+          Expanded(
+              flex: 2,
+              child: Center(child: Text('$name',
+                style: GoogleFonts.poppins(
+                    color: AppColors.primaryColor,
+                    fontSize:width>1500?25:20,
+                    fontWeight: FontWeight.bold),))),
+
+          Expanded(
+            flex: 5,
+            child: Text(description,textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontSize:width>1600? 23:15,
+                  fontWeight: FontWeight.normal),),
+          )
         ],
       ),
     );
   }
 
+ /* double responsiveDemension(double start,double width,[double factor=1]){
+    double responsiveWidth=0;
+    if(width<start && size==SecreenSize.large){
+      responsiveWidth=(start-width)*factor;
+    }
+    print('==================$responsiveWidth');
+    return responsiveWidth;
+  }
 
-
+*/
 
   
 }

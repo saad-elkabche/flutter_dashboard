@@ -13,11 +13,12 @@ import 'package:google_fonts/google_fonts.dart';
 class FirstSection extends StatelessWidget {
 
   SecreenSize size;
+  double width;
   void Function()? getStarted;
   void Function()? learnMore;
 
 
-   FirstSection({required this.size,this.getStarted,this.learnMore});
+   FirstSection({required this.size,required this.width,this.getStarted,this.learnMore});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,8 @@ class FirstSection extends StatelessWidget {
 
 
 
-       TwoColorText(fontSize: 42,
+       TwoColorText(
+           fontSize:width>1500?60: 42,
            textOne: 'EBP ',
            textTwo: 'Earn Big\nProfit',
            colorOne: AppColors.secondaryColor,
@@ -87,14 +89,16 @@ class FirstSection extends StatelessWidget {
 
         ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: 600
+            maxWidth: 700
           ),
           child: Text(
             'We offer various secure and risk free earning opportunities'
             'to our global users, who want to earn an attractive income.'
             'Join us to achieve your goals with our professional'
               'assistance and services. ',
-            style: GoogleFonts.poppins(color:size!=SecreenSize.small?Colors.black:Colors.white,fontWeight: FontWeight.w500,fontSize: 15),
+            style: GoogleFonts.poppins(color:size!=SecreenSize.small?Colors.black:Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize:width>1500? 25:15),
           ),
         ),
 
@@ -126,7 +130,7 @@ class FirstSection extends StatelessWidget {
   Widget secondPeace(){
     return Center(
       child: Image.asset(AppImages.img_web_first_section,
-        width: size==SecreenSize.large?400:size==SecreenSize.medium?400:200,
+        width: size==SecreenSize.large?width*0.4:size==SecreenSize.medium?400:200,
         fit: BoxFit.cover,),
     );
   }

@@ -8,6 +8,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/kyc_verification/components
 import 'package:ayoub_baali/presentation/ui/secreens/kyc_verification/components/warning.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -47,12 +48,12 @@ class KycVerificationSecreen extends StatelessWidget {
       body:  ListView(
         children: [
           KycWarning(),
-          const SizedBox(height: 20,),
+          SizedBox(height: 20.h,),
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: KycTitle(size: size),
           ),
-          const SizedBox(height: 25,),
+          SizedBox(height: 25.h,),
           size==SecreenSize.small
               ?
           KYCForm(size: size)
@@ -61,7 +62,7 @@ class KycVerificationSecreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: MainContainer(child: KYCForm(size: size,)),
           ),
-          const SizedBox(height: 40,),
+          SizedBox(height: 40.h,),
 
         ],
       ),

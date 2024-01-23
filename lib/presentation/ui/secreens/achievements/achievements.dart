@@ -6,6 +6,7 @@ import 'package:ayoub_baali/presentation/ui/components/components.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/achievements/components/tabbed_page.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -55,11 +56,11 @@ class _AchievementsState extends State<Achievements> {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 15,),
+           SizedBox(height: 15.h,),
           TabbedWidget(currentTab: currentTab, size: size, onSelect: onSelectTab),
-          const SizedBox(height:10 ,),
+          SizedBox(height:10.h ,),
           currentTab==0?achieved():upComing(),
-          SizedBox(height: 15,),
+           SizedBox(height: 15.h,),
         ],
       ),
     );

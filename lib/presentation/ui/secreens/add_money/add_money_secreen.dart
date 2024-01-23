@@ -11,6 +11,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/add_money/components/tabbed
 import 'package:ayoub_baali/presentation/ui/secreens/add_money/components/trade_calculator.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -70,7 +71,7 @@ class _AddMoneySecreenState extends State<AddMoneySecreen> {
      ),
       body: ListView(
         children: [
-          const SizedBox(height: 40),
+           SizedBox(height: 40.h),
 
 
 
@@ -79,7 +80,7 @@ class _AddMoneySecreenState extends State<AddMoneySecreen> {
             child: paymentGateway(),
           ),
 
-          const SizedBox(height: 10,),
+           SizedBox(height: 10.h,),
 
 
           if(size==SecreenSize.large)
@@ -92,7 +93,7 @@ class _AddMoneySecreenState extends State<AddMoneySecreen> {
               });
             },),
 
-          const SizedBox(height: 20,),
+           SizedBox(height: 20.h,),
           currencies()
 
 

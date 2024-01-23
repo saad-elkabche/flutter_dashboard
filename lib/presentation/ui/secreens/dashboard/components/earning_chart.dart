@@ -17,113 +17,116 @@ class EarningChart extends StatelessWidget {
   SecreenSize size;
   EarningChart({required this.height,required this.size});
 
+  late double boxWidth;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding:  EdgeInsets.only(left: 18.0),
-          child: Text("Earning Chart",style: TextStyle(fontWeight: FontWeight.bold),),
-        ),
-        const SizedBox(height: 10,),
-        MainContainer(
-          height: height,
-            child:  Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Center(
-                  child:  Column(
-                    children: [
-                      Expanded(
-                        child: BarChart(
-                          swapAnimationDuration: Duration(seconds: 2),
+    return LayoutBuilder(
+      builder: (context,constraints) {
 
-                          BarChartData(
-                              backgroundColor: AppColors.scaffoldColor,
-                              borderData: FlBorderData(
-                                  show: false
-                              ),
+        boxWidth=constraints.maxWidth;
 
-                              groupsSpace: 0,
-
-
-                              gridData:  FlGridData(
-                                drawVerticalLine: false,
-                                getDrawingHorizontalLine: (val)=>const FlLine(color: Colors.black,strokeWidth: 0.5)
-                              ),
-
-
-                              titlesData: FlTitlesData(
-                                //leftTitles:  const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
-                                rightTitles: const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
-                                topTitles:   const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
-                                  bottomTitles: AxisTitles(
-
-                                      sideTitles: SideTitles(
-                                          showTitles:true,
-                                          getTitlesWidget: (val,titleMeta){
-                                            String title=val.toString();
-
-
-                                            switch(title){
-                                              case '1':title+='st';
-                                              break;
-                                              case '2':title+='nd';
-                                              break;
-                                              case '3':title+='rd';
-                                              break;
-                                              default:
-                                                title+='th';
-                                            }
-
-                                            title+=' day';
-
-
-
-
-                                            return Text('$title',style: GoogleFonts.poppins(fontWeight: FontWeight.normal,color: Colors.black,fontSize: size==SecreenSize.small?7:11),);
-                                          }
-                                      )
-                                  )
-                              ),
-
-
-
-                              barGroups: List.generate(7, (index) => barChartGroupData(10,
-                                  size==SecreenSize.small
-                                      ?
-                                  10
-                                      :
-                                  size==SecreenSize.medium?22:14
-                                  ,
-                                  index+1
-                              ))
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 10,),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Row(
-                          mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(child: Center(child: chartKey(AppColors.primaryColor, 'Membership Earning'))),
-                            Expanded(child: Center(child: chartKey(AppColors.secondaryColor, 'Non-flexi Earning'))),
-                            Expanded(child: Center(child: chartKey(Colors.brown, 'Flexi Earning'))),
-                          ],
-                        ),
-                      )
-
-
-                    ],
-                  )
-              ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             Padding(
+              padding:  EdgeInsets.only(left: 18.0),
+              child: Text("Earning Chart",style: TextStyle(fontWeight: FontWeight.bold,fontSize: size==SecreenSize.large?25:15),),
             ),
-        ),
-      ],
+            const SizedBox(height: 10,),
+            MainContainer(
+              height: height,
+                minHeight: 320,
+                child:  Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Center(
+                      child:  Column(
+                        children: [
+                          Expanded(
+                            child: BarChart(
+                              swapAnimationDuration: Duration(seconds: 2),
+
+                              BarChartData(
+                                  backgroundColor: AppColors.scaffoldColor,
+                                  borderData: FlBorderData(
+                                      show: false
+                                  ),
+
+                                  groupsSpace: 0,
+
+
+                                  gridData:  FlGridData(
+                                    drawVerticalLine: false,
+                                    getDrawingHorizontalLine: (val)=>const FlLine(color: Colors.black,strokeWidth: 0.5)
+                                  ),
+
+
+                                  titlesData: FlTitlesData(
+                                    //leftTitles:  const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
+                                    rightTitles: const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
+                                    topTitles:   const AxisTitles(sideTitles:SideTitles(showTitles: false) ),
+                                      bottomTitles: AxisTitles(
+
+                                          sideTitles: SideTitles(
+                                              showTitles:true,
+                                              getTitlesWidget: (val,titleMeta){
+                                                String title=val.toString();
+
+
+                                                switch(title){
+                                                  case '1':title+='st';
+                                                  break;
+                                                  case '2':title+='nd';
+                                                  break;
+                                                  case '3':title+='rd';
+                                                  break;
+                                                  default:
+                                                    title+='th';
+                                                }
+
+                                                title+=' day';
+
+
+
+
+                                                return Text('$title',style: GoogleFonts.poppins(fontWeight: FontWeight.normal,color: Colors.black,fontSize: size==SecreenSize.small?7:11),);
+                                              }
+                                          )
+                                      )
+                                  ),
+
+
+
+                                  barGroups: List.generate(7, (index) => barChartGroupData(10,((boxWidth/10)/3),index+1
+                                  ))
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 10,),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Row(
+                              mainAxisAlignment:MainAxisAlignment.spaceEvenly ,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(child: Center(child: chartKey(AppColors.primaryColor, 'Membership Earning'))),
+                                Expanded(child: Center(child: chartKey(AppColors.secondaryColor, 'Non-flexi Earning'))),
+                                Expanded(child: Center(child: chartKey(Colors.brown, 'Flexi Earning'))),
+                              ],
+                            ),
+                          )
+
+
+                        ],
+                      )
+                  ),
+                ),
+            ),
+          ],
+        );
+      }
     );
   }
 

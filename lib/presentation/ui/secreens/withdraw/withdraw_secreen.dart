@@ -9,6 +9,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/withdraw/components/payment
 import 'package:ayoub_baali/presentation/ui/secreens/withdraw/components/preview.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/withdraw/components/table.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -58,7 +59,7 @@ class _WithDrawSecreenState extends State<WithDrawSecreen> {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 40,),
+          SizedBox(height: 40.h,),
           paymentPreview(),
 
           if(size==SecreenSize.large)
@@ -72,9 +73,9 @@ class _WithDrawSecreenState extends State<WithDrawSecreen> {
               ),
             ),
 
-          const SizedBox(height: 10,),
+          SizedBox(height: 10.h,),
           WithdrawTable(size: size,),
-          const SizedBox(height: 10,),
+          SizedBox(height: 10.h,),
 
         ],
       ),

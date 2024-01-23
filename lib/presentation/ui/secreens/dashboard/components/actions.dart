@@ -9,14 +9,19 @@ import 'package:flutter/material.dart';
 class ActionWeb extends StatelessWidget {
   String name;
   String icon;
+  double height;
 
-  ActionWeb({required this.name,required this.icon});
+  ActionWeb({required this.name,required this.height,required this.icon});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: height*0.07,
       width: 155,
+      constraints: const BoxConstraints(
+        minHeight: 70,
+        maxHeight: 90
+      ),
       margin: EdgeInsets.symmetric(horizontal: 8,vertical: 5),
       decoration: BoxDecoration(
           color: AppColors.primaryColor,
@@ -25,8 +30,8 @@ class ActionWeb extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 50,
-            width: 50,
+            height: double.infinity,
+            width: 70,
             decoration: BoxDecoration(
                 color: AppColors.secondaryColor,
                 borderRadius: BorderRadius.circular(10)

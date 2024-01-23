@@ -9,9 +9,10 @@ class Menu extends StatefulWidget {
   List<MenuItem> items;
   SecreenSize size;
   String currentLocation;
+  double? height;
   void Function(MenuItem)? onItemClick;
 
-  Menu({required this.items,required this.currentLocation,required this.size,required this.onItemClick});
+  Menu({required this.items,this.height,required this.currentLocation,required this.size,required this.onItemClick});
 
   @override
   State<Menu> createState() => _MenuState();
@@ -48,14 +49,22 @@ class _MenuState extends State<Menu> {
   }
 
   Widget menuItemWidget(MenuItem menuItem){
-    return ListTile(
-      onTap:()=> widget.onItemClick?.call(menuItem),
-      leading: ImageIcon(
-          AssetImage(menuItem.icon),
-        color: widget.currentLocation==menuItem.location?Colors.white:AppColors.secondaryColor,
-        size: 17,
+    return Container(
+      height:widget.height,
+      constraints: const BoxConstraints(
+        maxHeight: 55
       ),
-      title:isExpanded? Text(menuItem.name,style: GoogleFonts.poppins(fontSize: 13,color: Colors.white),):null,
+      child: Center(
+        child: ListTile(
+          onTap:()=> widget.onItemClick?.call(menuItem),
+          leading: ImageIcon(
+              AssetImage(menuItem.icon),
+            color: widget.currentLocation==menuItem.location?Colors.white:AppColors.secondaryColor,
+            size: 20,
+          ),
+          title:isExpanded? Text(menuItem.name,style: GoogleFonts.poppins(fontSize: 17,fontWeight: FontWeight.w500,color: Colors.white),):null,
+        ),
+      ),
     );
   }
 

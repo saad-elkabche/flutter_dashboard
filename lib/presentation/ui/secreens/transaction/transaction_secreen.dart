@@ -8,6 +8,7 @@ import 'package:ayoub_baali/presentation/ui/secreens/transaction/components/orde
 import 'package:ayoub_baali/presentation/ui/secreens/transaction/components/table.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/transaction/components/transaction_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -16,6 +17,7 @@ class TransactionSecreen extends StatelessWidget {
 
   late SecreenSize size;
   late double width;
+  late double height;
 
   TransactionSecreen({Key? key}) : super(key: key);
 
@@ -24,6 +26,7 @@ class TransactionSecreen extends StatelessWidget {
 
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
+    height=TemplateState.heightOf(context);
 
     return Scaffold(
       appBar: MyHeader(
@@ -47,13 +50,13 @@ class TransactionSecreen extends StatelessWidget {
       ) ,
       body:  ListView(
         children: [
-          const SizedBox(height: 40,),
+          SizedBox(height: 40.h,),
           TransactionHeader(size: size),
-          const SizedBox(height: 20,),
+          SizedBox(height: 20.h,),
           orders(),
-          SizedBox(height: 55,),
+          SizedBox(height: 55.h,),
           TransactionTable(size: size),
-          SizedBox(height: 25,),
+          SizedBox(height: 25.h,),
         ],
       ),
     );
@@ -71,12 +74,13 @@ class TransactionSecreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: MainContainer(
+        height: height*0.3,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 17.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: 15,),
+                const SizedBox(width: 15,),
                 Expanded(
                   flex: 3,
                     child:Row(

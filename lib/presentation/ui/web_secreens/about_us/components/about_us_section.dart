@@ -31,23 +31,24 @@ class AboutUsSection extends StatelessWidget {
       );
     }else{
       return Row(
-        mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment:MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                title(),
-                const SizedBox(height: 10,),
-                SizedBox(
-                    width: width<830?width-400:null,
-                    child: description())
-              ],
+          Expanded(
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  title(),
+                  const SizedBox(height: 10,),
+                  SizedBox(
+                      width: width<830?width-400:null,
+                      child: description())
+                ],
+              ),
             ),
           ),
-          picture()
+          Expanded(child: Center(child: picture()))
         ],
       );
     }
@@ -59,7 +60,8 @@ class AboutUsSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: size==SecreenSize.small?CrossAxisAlignment.center:CrossAxisAlignment.start,
       children: [
-        TwoColorText(fontSize: 20,
+        TwoColorText(
+            fontSize:width>1500?35:20,
             textOne: 'About ',
             textTwo: 'Us',
             colorOne: AppColors.primaryColor,
@@ -86,8 +88,9 @@ class AboutUsSection extends StatelessWidget {
         'earn risk-free earning. We have also provided various digital earning'
         'services to our global customers for the last 20 years. '
         ,
-
-        style: GoogleFonts.poppins(height: 2.5,color: Colors.black,fontWeight: FontWeight.normal),
+        style: GoogleFonts.poppins(
+            height: 2.5,
+            color: Colors.black,fontWeight: FontWeight.normal),
       ),
     );
   }

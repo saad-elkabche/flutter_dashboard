@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 class MainContainer extends StatelessWidget {
   Widget child;
   double? height;
+  double? minHeight;
+  double? maxHeight;
 
-  MainContainer({required this.child,this.height}) ;
+  MainContainer({required this.child,this.maxHeight,this.minHeight,this.height}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,10 @@ class MainContainer extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 7),
       height: height,
       padding: const EdgeInsets.all(8),
+      constraints: BoxConstraints(
+        minHeight: minHeight ?? 0.0,
+        maxHeight: maxHeight ?? double.infinity
+      ),
       decoration: BoxDecoration(
           color: AppColors.scaffoldColor,
           borderRadius: BorderRadius.circular(20),

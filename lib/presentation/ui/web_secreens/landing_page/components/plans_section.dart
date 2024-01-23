@@ -11,7 +11,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PlansSection extends StatelessWidget {
   SecreenSize size;
-   PlansSection({required this.size});
+  double width;
+   PlansSection({required this.size,required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -124,8 +125,8 @@ class PlansSection extends StatelessWidget {
   Widget plansLarge(){
     return WebBackDecoration(
 
-        decorationHeight: 220,
-        containerHeight: 320,
+        decorationHeight: 220+responsiveDemension(1240, width,0.6),
+        containerHeight: 320+responsiveDemension(1240, width,0.6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -169,8 +170,11 @@ class PlansSection extends StatelessWidget {
 
   Widget plan(List<String> items,String name,[Color borderColor=AppColors.secondaryColor]){
     return Container(
-      width: size==SecreenSize.large?325:size==SecreenSize.medium?300:double.infinity,
-      height: 300,
+      width: size==SecreenSize.large?width*0.3:size==SecreenSize.medium?300:double.infinity,
+      height: 300+responsiveDemension(1240, width,0.6),
+      constraints: const BoxConstraints(
+        maxHeight: 350
+      ),
       decoration: BoxDecoration(
           color: AppColors.scaffoldColor,
         borderRadius: BorderRadius.circular(20),
@@ -199,8 +203,17 @@ class PlansSection extends StatelessWidget {
   Widget planItem(String item,String img){
     return  ListTile(
       leading:Image.asset(img) ,
-      title: Text(item,style:GoogleFonts.poppins(color: Colors.black,fontSize: 13,fontWeight: FontWeight.w500) ,),
+      title: Text(item,style:GoogleFonts.poppins(color: Colors.black,fontSize: size==SecreenSize.large?16:13,fontWeight: FontWeight.w500) ,),
     );
+  }
+
+  double responsiveDemension(double start,double width,[double factor=1]){
+    double responsiveWidth=0;
+    if(width<start && size==SecreenSize.large){
+      responsiveWidth=(start-width)*factor;
+    }
+    print('==================$responsiveWidth');
+    return responsiveWidth;
   }
 
 

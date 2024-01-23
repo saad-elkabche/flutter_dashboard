@@ -32,6 +32,16 @@ class _TemplateState extends State<Template> {
   String nameRoute='Dashboard';
   String currentLocation=Routes.dashboard;
 
+  List<String> bottomNavRoutes=[
+    Routes.myInvest,
+    Routes.addMoney,
+    Routes.withdraw,
+    Routes.moneyTransfer,
+    Routes.transaction,
+
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     currentLocation=GoRouterState.of(context).uri.toString();
@@ -78,6 +88,7 @@ class _TemplateState extends State<Template> {
           currentIndex: 0,
           type: BottomNavigationBarType.fixed,
           onTap: (index){
+            GoRouter.of(context).go(bottomNavRoutes.elementAt(index));
             setState(() {
               selectBottomMenuItem=index;
             });
@@ -110,6 +121,7 @@ class _TemplateState extends State<Template> {
 
   Widget _menu() {
     return  Menu(
+      height: height>800?height/14:null,
         currentLocation: currentLocation,
         items:[
           MenuItem('Dashboard', Routes.dashboard, AppImages.ic_dashboard),
