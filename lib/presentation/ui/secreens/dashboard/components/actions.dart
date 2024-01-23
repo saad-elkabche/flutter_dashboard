@@ -19,8 +19,8 @@ class ActionWeb extends StatelessWidget {
       height: height*0.07,
       width: 155,
       constraints: const BoxConstraints(
-        minHeight: 70,
-        maxHeight: 90
+        minHeight: 50,
+        maxHeight: 65
       ),
       margin: EdgeInsets.symmetric(horizontal: 8,vertical: 5),
       decoration: BoxDecoration(

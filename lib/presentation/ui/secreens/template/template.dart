@@ -28,7 +28,7 @@ class _TemplateState extends State<Template> {
   late double width;
   late double height;
   GlobalKey<ScaffoldState> scaffoldState=GlobalKey<ScaffoldState>();
-   int selectBottomMenuItem=0;
+   int selectBottomMenuItem=-1;
   String nameRoute='Dashboard';
   String currentLocation=Routes.dashboard;
 
@@ -84,8 +84,6 @@ class _TemplateState extends State<Template> {
       body: widget.child,
       bottomNavigationBar: size!=SecreenSize.large?BottomNavigationBar(
           backgroundColor: AppColors.primaryColor,
-
-          currentIndex: 0,
           type: BottomNavigationBarType.fixed,
           onTap: (index){
             GoRouter.of(context).go(bottomNavRoutes.elementAt(index));
