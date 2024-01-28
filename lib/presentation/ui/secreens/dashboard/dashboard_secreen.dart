@@ -13,10 +13,12 @@ import 'package:ayoub_baali/presentation/ui/secreens/dashboard/components/profit
 import 'package:ayoub_baali/presentation/ui/secreens/dashboard/components/refferel_link.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/dashboard/components/statistics_chart.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/template/template_state.dart';
+import 'package:ayoub_baali/routes.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 
 class DashboardSecreen extends StatelessWidget {
@@ -55,7 +57,7 @@ class DashboardSecreen extends StatelessWidget {
            SizedBox(height: 40.h,),
 
           if(size==SecreenSize.large)
-            _getAction(),
+            _getAction(context),
 
 
            SizedBox(height: 15.h,),
@@ -175,7 +177,7 @@ class DashboardSecreen extends StatelessWidget {
     );
   }
 
-  Widget _getAction() {
+  Widget _getAction(BuildContext context) {
     return  Center(
       child: MainContainer(
         child: Row(
@@ -184,7 +186,7 @@ class DashboardSecreen extends StatelessWidget {
             Expanded(child: ActionWeb(name: 'My Invest', icon: AppImages.ic_my_invest,height: height,)),
             Expanded(child: ActionWeb(name: 'Add Money', icon: AppImages.ic_money,height: height,)),
             Expanded(child: ActionWeb(name: 'Withdraw', icon: AppImages.ic_withdraw_action,height: height,)),
-            Expanded(child: ActionWeb(name: 'Network', icon: AppImages.ic_network,height: height,)),
+            Expanded(child: ActionWeb(name: 'Network', onClick: ()=>GoRouter.of(context).go(Routes.my_network),icon: AppImages.ic_network,height: height,)),
             Expanded(child: ActionWeb(name: 'Profit log', icon: AppImages.ic_profit_log,height: height,)),
           ],
         ),

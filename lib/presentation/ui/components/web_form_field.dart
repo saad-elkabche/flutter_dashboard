@@ -82,40 +82,46 @@ class _WebFormFieldState extends State<WebFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return widget.label.isNotEmpty
+        ?
+    Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         Text(widget.label,style: GoogleFonts.poppins(color: widget.labelColor,fontSize: widget.fontSizeLabel,fontWeight: widget.fontWeightLabel),),
         SizedBox(height: 10,),
-        TextFormField(
-          style: GoogleFonts.poppins(fontWeight: widget.fontWeightText,fontSize: widget.fontSizetext),
-          obscureText: hidePass,
-          controller: widget.controller,
-          decoration: InputDecoration(
-            fillColor: widget.fillColor,
-            filled: widget.fillColor!=null,
-            contentPadding: EdgeInsets.symmetric(horizontal: 5,vertical: 3),
-            hintText: widget.hint,
-            hintStyle:GoogleFonts.poppins(color: widget.hintColor,fontSize: widget.fontSizeHint,fontWeight: widget.fontWeightHint),
-            prefixIcon: widget.leading,
-            suffixIcon:GestureDetector(
-                onTap: onSuffixTap,
-                child: widget.suffix ?? const SizedBox(width: 0,height: 0,)) ,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              borderSide: BorderSide(color: widget.borderColor,width: widget.borderWidth)
-            ),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius),
-                borderSide: BorderSide(color: widget.activeBorderColor,width: widget.borderWidth)
-            ),
+        field()
 
-          ),
-        )
       ],
-    );
+    )
+        :field();
   }
+  Widget field()=>TextFormField(
+    style: GoogleFonts.poppins(fontWeight: widget.fontWeightText,fontSize: widget.fontSizetext),
+    obscureText: hidePass,
+    controller: widget.controller,
+    decoration: InputDecoration(
+      fillColor: widget.fillColor,
+      filled: widget.fillColor!=null,
+      contentPadding: EdgeInsets.symmetric(horizontal: 5,vertical: 3),
+      hintText: widget.hint,
+      hintStyle:GoogleFonts.poppins(color: widget.hintColor,fontSize: widget.fontSizeHint,fontWeight: widget.fontWeightHint),
+      prefixIcon: widget.leading,
+      suffixIcon:GestureDetector(
+          onTap: onSuffixTap,
+          child: widget.suffix ?? const SizedBox(width: 0,height: 0,)) ,
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          borderSide: BorderSide(color: widget.borderColor,width: widget.borderWidth)
+      ),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          borderSide: BorderSide(color: widget.activeBorderColor,width: widget.borderWidth)
+      ),
+
+    ),
+  );
 
   void onSuffixTap() {
     if(widget.isPassWord){

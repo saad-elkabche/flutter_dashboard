@@ -3,6 +3,7 @@
 import 'package:ayoub_baali/presentation/ui/secreens/achievements/achievements.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/logout/logout_secreen.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/membership/membership.dart';
+import 'package:ayoub_baali/presentation/ui/secreens/my_network/my_newtork_secreen.dart';
 import 'package:ayoub_baali/presentation/ui/secreens/secreens.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/about_us/about_us_page.dart';
 import 'package:ayoub_baali/presentation/ui/web_secreens/forget_password/forget_pass_page.dart';
@@ -28,6 +29,7 @@ class Routes{
   static const String template='/template';
   static const String transaction='/transaction';
   static const String withdraw='/withdraw';
+  static const String my_network='/myNetwork';
   static const String logout='/logout';
 
   static const String membership='/membership';
@@ -184,6 +186,12 @@ class Routes{
                   path: logout,
                   pageBuilder: (context,state){
                     return NoTransitionPage(child: LogoutSecreen());
+                  }
+              ),
+              GoRoute(
+                  path: my_network,
+                  pageBuilder: (context,state){
+                    return NoTransitionPage(child: MyNetwork());
                   }
               ),
             ]

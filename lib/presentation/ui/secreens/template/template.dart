@@ -36,7 +36,7 @@ class _TemplateState extends State<Template> {
     Routes.myInvest,
     Routes.addMoney,
     Routes.withdraw,
-    Routes.moneyTransfer,
+    Routes.my_network,
     Routes.transaction,
 
   ];

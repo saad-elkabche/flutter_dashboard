@@ -81,6 +81,10 @@ class AppImages{
   static const String imgAchievements6="assets/images/img_achievements_6.png";
 
 
+  static const String img_node_primary_color="assets/images/img_node_primary_color.png";
+  static const String img_node_secondary_color="assets/images/img_node_secondary_color.png";
+
+
 
 
 
@@ -163,6 +167,12 @@ class AppImages{
   static const String ic_file="assets/icons/ic_file.png";
   static const String ic_referral_link="assets/icons/ic_attach.png";
   static const String ic_account_twitter="assets/icons/ic_account_twitter.png";
+
+
+
+
+  static const String ic_arrow_left="assets/icons/ic_arrow_left.png";
+  static const String ic_arrow_right="assets/icons/ic_arrow_right.png";
 
 
 
