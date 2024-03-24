@@ -28,66 +28,89 @@ class _MyNetworkState extends State<MyNetwork> {
   int currentTab=0;
 
 
+  late TransformationController viewTransformationController ;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
 
     size=TemplateState.sizeOf(context);
     width=TemplateState.widthOf(context);
 
+    setInitialScale();
+
 
     return  Scaffold(
-      appBar:  MyHeader(
-          name:'My Network',
-          size: size,
-          leadingWidth: size!=SecreenSize.large?80:null,
-          leading: Row(
-            children: [
-              IconButton(
-                  onPressed: ()=>TemplateState.scaffoldStateOf(context).currentState!.openDrawer(),
-                  icon: Image.asset(AppImages.ic_dashboard_mob)
-              ),
-              const ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
-            ],
-          ),
 
-          mobActions: [
-            if(size==SecreenSize.medium)
-              SizedBox(width: 170,height: 35,child: WebFormField(hint: 'Search Here',borderColor: Colors.white,activeBorderColor: Colors.white, label: '',suffix: Icon(Icons.search,color: AppColors.secondaryColor,),fillColor: Colors.white,)),
-            const SizedBox(width: 5,),
-            ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
-            Icon(Icons.arrow_forward_ios,color: AppColors.secondaryColor,),
-            SizedBox(width: 5,)
-          ]
-      ),
-      body:Column(
-        children: [
-          SizedBox(height: 40.h,),
-          if(size!=SecreenSize.medium)
-          NetworkHeader(currentTab: currentTab,width: width, size: size, onSelect: (index)=>setState(() {
-            currentTab=index;
-          })),
+        appBar:  MyHeader(
+            name:'My Network',
+            size: size,
+            leadingWidth: size!=SecreenSize.large?80:null,
+            leading: Row(
+              children: [
+                IconButton(
+                    onPressed: ()=>TemplateState.scaffoldStateOf(context).currentState!.openDrawer(),
+                    icon: Image.asset(AppImages.ic_dashboard_mob)
+                ),
+                const ImageIcon(AssetImage(AppImages.ic_person),color: AppColors.secondaryColor,)
+              ],
+            ),
 
-          //SizedBox(height: 40.h,),
-          
-          Expanded(child: InteractiveViewer(
-              constrained: false,
-              boundaryMargin: EdgeInsets.all(100),
-              minScale: 0.01,
-              maxScale: 5.6,
+            mobActions: [
+              if(size==SecreenSize.medium)
+                SizedBox(width: 170,height: 35,child: WebFormField(hint: 'Search Here',borderColor: Colors.white,activeBorderColor: Colors.white, label: '',suffix: Icon(Icons.search,color: AppColors.secondaryColor,),fillColor: Colors.white,)),
+              const SizedBox(width: 5,),
+              ImageIcon(AssetImage(AppImages.ic_notification),color: AppColors.secondaryColor,),
+              Icon(Icons.arrow_forward_ios,color: AppColors.secondaryColor,),
+              SizedBox(width: 5,)
+            ]
+        ),
+        body:Column(
+          children: [
+            SizedBox(height: 40.h,),
+            if(size!=SecreenSize.medium)
+              NetworkHeader(currentTab: currentTab,width: width, size: size, onSelect: (index)=>setState(() {
+                currentTab=index;
+              })),
 
-              child: MyGraph(size: size))),
+            //SizedBox(height: 40.h,),
 
-
-          SizedBox(
-              width: 350,
-              child: NetworkPagination(nbPages: 20,))
-
-
+            Expanded(child: InteractiveViewer(
+                constrained: false,
+                boundaryMargin: const EdgeInsets.all(100),
+                minScale: 0.01,
+                maxScale: 5.6,
+                transformationController: viewTransformationController,
+                child: MyGraph(size: size))
+            ),
+            SizedBox(
+                width: 350,
+                child: NetworkPagination(nbPages: 20,))
 
 
 
-        ],
-      )
+
+
+          ],
+        )
     );
+  }
+
+  void setInitialScale() {
+    double intialScale;
+    if(size==SecreenSize.large){
+      intialScale=(width*0.72)/1500;
+    }else{
+      intialScale=(width*0.95)/800;
+    }
+
+    final scaleMatrix = Matrix4.identity()..scale(intialScale);
+    viewTransformationController =TransformationController(scaleMatrix);
   }
 }
